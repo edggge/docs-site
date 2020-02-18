@@ -111,7 +111,9 @@ bnbcli dex order
 
 There are a few flags here that are critical:
 
-- `--side` refers to whether you are buying or selling (the Base Asset, in this case `BNB`)
+- `--side` is an integer referring to whether you are buying or selling (the Base Asset, in this case `BNB`)
+  - `1`: Buying the base asset
+  - `2`: Selling the base asset
 - `--qty` is the quantity, which needs to be larger than the minimum `lot_size`
 - `--tif` is the time in force, which is either
   - `Good till Expiry` (GTE): orders stay on the exchange until they are filled by the opposite orders satisfying the limit price, or cancelled, or expire after 72 hours

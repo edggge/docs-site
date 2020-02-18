@@ -131,6 +131,52 @@ This return output has a few important details:
 - `NewOrderMsg`, which includes
   - `Id` : the order ID, which is needed to cancel the order (i.e. `D8BC59D571795A34D7D5A098BA4F1C26C07E78D3-5`)
 
+You can also query the accelerated node api for details of your trade.
+
+The following parameters are important:
+- `symbol`: Format: BaseAsset_QuoteAsset
+- `sellerOrderId`: this is the `id` that returned from previous command
+
+```bash
+curl "https://dex.binance.org/api/v1/trades?symbol=BNB_BUSD-BD1&sellerOrderId=D8BC59D571795A34D7D5A098BA4F1C26C07E78D3-4"|jq
+{
+  "trade": [
+    {
+      "tradeId": "68955154-0",
+      "blockHeight": 68955154,
+      "symbol": "BNB_BUSD-BD1",
+      "price": "23.21680000",
+      "quantity": "0.00100000",
+      "buyerOrderId": "25CF9E8801FB28D1B7F1EAE5FBFE1FD9CDAF01FE-57452",
+      "sellerOrderId": "D8BC59D571795A34D7D5A098BA4F1C26C07E78D3-4",
+      "buyerSource": 3,
+      "sellerSource": 0,
+      "buyerId": "bnb1yh8eazqplv5drdl3atjlhlslm8x67q07c2mann",
+      "sellerId": "bnb1mz79n4t309drf4745zvt5ncuymq8u7xnj7ptxz",
+      "buyFee": "BNB:0.00000040;",
+      "sellFee": "BNB:0.00000040;",
+      "baseAsset": "BNB",
+      "quoteAsset": "BUSD-BD1",
+      "buySingleFee": "BNB:0.00000040;",
+      "sellSingleFee": "BNB:0.00000040;",
+      "tickType": "BuyTaker",
+      "time": 1581981057249
+    }
+  ],
+  "total": -1
+}
+```
+
+This return output has a few important details:
+- `tradeId`: this is a unique identifier for each trade
+- `blockHeight`: this is the height where the orders are matched
+- `symbol`: this is the trading pair symbol
+- `price`: this is the execution price
+- `buyerOrderId`: this is the order id of your counter party
+- `buyerId` and `sellerId` are the address of buyer and seller
+- `buyFee` and `sellFee` are calculated accordingly. In this case, the fee is `0.4%` paid in `BNB`
+- `buySingleFee` and `buyFee` are listed separatedly because your order can be matched with different counter
+
 Once the order fills, query the account balance to see if the `BUSD` has been purchased.
 
 ```bash

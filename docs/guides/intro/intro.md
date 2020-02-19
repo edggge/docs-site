@@ -4,39 +4,33 @@ title: Introduction
 sidebar_label: Introduction
 ---
 
-- [ ] https://docs.binance.org/blockchain.html (talk about high-level architecture)
+[Binance Chain](https://www.binance.org) is a blockchain developed by [Binance](https://www.binance.com) and its community. It implements a vision of a decentralized exchange (DEX) for digital assets.
 
-## Intro
-
-[Binance Chain]() is a blockchain developed by [Binance]() and its community that implements a vision of a decentralized exchange (DEX) for digital assets.
-
-At the heart of Binance Chain is a highly performant [matching engine]() built on [distributed consensus]() that aims to replicate the <1 second trading efficiency of current centralized exchanges.
-
-Binance Chain transactions burns [BNB]() (the native token of the Binance ecosystem), according to a fee schedule.
-
-Binance Chain also includes efforts to implement [listing assets from other chains](cross-chain-atomic-swaps), and cryptographic primitives such as [threshold signatures](threshold-signature-scheme).
+It features a highly performant distributed [matching engine](../concepts/matching-engine) that aims to replicate the <1 second matching efficiency of current centralized exchanges. Transactions burns [Binance Coin (BNB)](https://www.binance.com/en/use-bnb) according to a fee schedule.
 
 ## Functionality
 
-Binance Chain has the basic features of most blockchains:
+Binance Chain has common functionality that most blockchains have, and in addition offers innovative features specific to the DEX and custody use case.
+
+### Basic Features
 
 - Sending and receiving BNB and digital assets
 - Issuing new digital assets (we have a standard called BEP-2)
 - Mint/burn, freeze/unfreeze, lock/unlock of digital assets
 
-It has DEX and trading-specific functionality:
+### DEX-specific features
 
 - Propose exchange listing for trading pairs
 - Creating maker/taker orders for traders
-- Listing assets from other chains using atomic swaps (BEP-3)
+- Listing assets from other chains using [cross-chain atomic swaps](cross-chain-atomic-swaps)
 
-Binance Chain also implements new features, such as
+### Innovation
 
-- Threshold Signatures (an alternative to multisig)
+- [Threshold Signatures](threshold-signature-scheme) (an alternative to multisig)
 - Smart Contracts sidechain (in-progress)
 
 ## Participate
 
 There are different ways to participate in the network, from light nodes to full validators.
 
-Binance Chain follows a philosophy of progressive decentralization. We envision a future where organizations and individuals can run validator nodes, and BNB can be staked to join governance.
+Binance Chain embraces a philosophy of progressive decentralization, and envisions a future where BNB can be staked by organizations and individuals to participate in governance and run validator nodes.

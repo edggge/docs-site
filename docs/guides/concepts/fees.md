@@ -102,6 +102,163 @@ You will pay on mainnet/testnet
 ```
 0.0003 BNB * 5 = 0.0015 BNB
 ```
+## How are rewards distributed between validators?
+
+you can use [API](https://dex.binance.org/api/v1/fees) to get the latest fee params.
+```
+[
+{
+msg_type: "submit_proposal",
+fee: 500000000,
+fee_for: 1
+},
+{
+msg_type: "deposit",
+fee: 62500,
+fee_for: 1
+},
+{
+msg_type: "vote",
+fee: 0,
+fee_for: 3
+},
+{
+msg_type: "create_validator",
+fee: 1000000000,
+fee_for: 1
+},
+{
+msg_type: "remove_validator",
+fee: 100000000,
+fee_for: 1
+},
+{
+msg_type: "dexList",
+fee: 100000000000,
+fee_for: 2
+},
+{
+msg_type: "orderNew",
+fee: 0,
+fee_for: 3
+},
+{
+msg_type: "orderCancel",
+fee: 0,
+fee_for: 3
+},
+{
+msg_type: "issueMsg",
+fee: 50000000000,
+fee_for: 2
+},
+{
+msg_type: "mintMsg",
+fee: 500000000,
+fee_for: 2
+},
+{
+msg_type: "tokensBurn",
+fee: 50000000,
+fee_for: 1
+},
+{
+msg_type: "tokensFreeze",
+fee: 500000,
+fee_for: 1
+},
+{
+fixed_fee_params: {
+msg_type: "send",
+fee: 37500,
+fee_for: 1
+},
+multi_transfer_fee: 30000,
+lower_limit_as_multi: 2
+},
+{
+dex_fee_fields: [
+{
+fee_name: "ExpireFee",
+fee_value: 25000
+},
+{
+fee_name: "ExpireFeeNative",
+fee_value: 5000
+},
+{
+fee_name: "CancelFee",
+fee_value: 25000
+},
+{
+fee_name: "CancelFeeNative",
+fee_value: 5000
+},
+{
+fee_name: "FeeRate",
+fee_value: 1000
+},
+{
+fee_name: "FeeRateNative",
+fee_value: 400
+},
+{
+fee_name: "IOCExpireFee",
+fee_value: 10000
+},
+{
+fee_name: "IOCExpireFeeNative",
+fee_value: 2500
+}
+]
+},
+{
+msg_type: "timeLock",
+fee: 1000000,
+fee_for: 1
+},
+{
+msg_type: "timeUnlock",
+fee: 1000000,
+fee_for: 1
+},
+{
+msg_type: "timeRelock",
+fee: 1000000,
+fee_for: 1
+},
+{
+msg_type: "setAccountFlags",
+fee: 100000000,
+fee_for: 1
+},
+{
+msg_type: "HTLT",
+fee: 37500,
+fee_for: 1
+},
+{
+msg_type: "depositHTLT",
+fee: 37500,
+fee_for: 1
+},
+{
+msg_type: "claimHTLT",
+fee: 37500,
+fee_for: 1
+},
+{
+msg_type: "refundHTLT",
+fee: 37500,
+fee_for: 1
+}
+]
+```
+
+The `fee_for`parameter indicate the different distribution way:
+* `1` means rewards is only for block proposer
+* `2` means rewards are shared among all validators
+* `3` means fee is free.
 
 ## How to query fees in every block
 

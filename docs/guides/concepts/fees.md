@@ -3,8 +3,6 @@ id: fees
 title: Fees
 ---
 
-- [ ] https://docs.binance.org/trading-spec.html (see fees)
-
 **BNB** is the native token on Binance Chain, thus users are charged BNB for sending transactions.
 
 ### Trading Fees on DEX
@@ -23,7 +21,6 @@ Trading fee can be queried at [here](https://dex.binance.org/api/v1/fees?format=
 
 The difference between Binance Chain and Ethereum is that there is no notion of `gas`. As a result,
 fees for the rest transactions are fixed. The details are showned in the table below:
-<!--END_DOCUSAURUS_CODE_TABS-->
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Mainnet-->
@@ -105,7 +102,7 @@ You will pay on mainnet/testnet
 ## How are rewards distributed between validators?
 
 you can use [API](https://dex.binance.org/api/v1/fees) to get the latest fee params.
-```
+```json
 [
 {
 msg_type: "submit_proposal",

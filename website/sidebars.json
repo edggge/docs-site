@@ -41,13 +41,13 @@
       "walletconnect"
     ],
     "Run a node": [
-      "fullnode",
-      "fullnodeissues",
-      "extra-data-from-fullnode",
-      "light-client",
       "guides/node/nodetypes",
-      "guides/node/fullnode",
-      "guides/node/lightnode"
+      {
+        "type": "subcategory",
+        "label": "Full Node",
+        "ids": ["fullnode", "fullnodeissues", "extra-data-from-fullnode"]
+      },
+      "light-client"
     ],
     "Walkthroughs": [
       "list_instructions",

@@ -1,30 +1,51 @@
 - [Upcoming Changes in Binance Chain API v0.6.4](#upcoming-changes-in-binance-chain-api-v064)
-  * [HTTP API](#http-api)
-    + [/api/v1/trades](#-api-v1-trades-)
+  - [HTTP API](#http-api)
+    - [Add Error Message for Newly Created Address](#add-error-message-for-newly-created-address)
+    - [/api/v1/trades](#apiv1trades)
+        - [**_Changes_**](#changes)
+    - [Trade](#trade)
 - [Upcoming Changes in Binance Chain API v0.6.3](#upcoming-changes-in-binance-chain-api-v063)
-  * [Node RPC](#node-rpc)
-  * [HTTP API](#http-api)
-    + [/api/v1/atomic-swaps](#-api-v1-atomic-swaps-)
-  * [WebSocket](#websocket)
+  - [HTTP API](#http-api-1)
+    - [/api/v1/atomic-swaps](#apiv1atomic-swaps)
+    - [/api/v1/atomic-swaps/{id}](#apiv1atomic-swapsid)
+        - [**_Changes_**](#changes-1)
+    - [AtomicSwap](#atomicswap)
+  - [WebSocket](#websocket)
+  - [Node RPC](#node-rpc)
+    - [Events](#events)
 - [Upcoming Changes in Binance Chain API v0.6.2](#upcoming-changes-in-binance-chain-api-v062)
-  * [HTTP API](#http-api)
-    + [/api/v2/transactions-in-block/{blockHeight}](#-api-v2-transactions-in-block--blockheight-)
-    + [/api/v1/timelocks/{account_addr}](#-api-v1-timelocks--account-addr-)
-    + [/api/v1/timelock/{account_addr}?(id={recordid})](#-api-v1-timelock--account-addr---id--recordid--)
+  - [HTTP API](#http-api-2)
+    - [/api/v2/transactions-in-block/{blockHeight}](#apiv2transactions-in-blockblockheight)
+        - [**_Changes_**](#changes-2)
+    - [TxV2](#txv2)
+    - [/api/v1/timelocks/{account_addr}](#apiv1timelocksaccountaddr)
+        - [**_Changes_**](#changes-3)
+    - [TimeLocks](#timelocks)
+    - [/api/v1/timelock/{account_addr}?(id={recordid})](#apiv1timelockaccountaddridrecordid)
+        - [**_Changes_**](#changes-4)
+    - [TimeLocks](#timelocks-1)
 - [Upcoming Changes in Binance Chain API v0.6.1](#upcoming-changes-in-binance-chain-api-v061)
-  * [HTTP API](#http-api)
-    + [/api/v1/account/{address}](#apiv1accountaddress)
-    + [Account](#account)
+  - [HTTP API](#http-api-3)
+    - [/api/v1/account/{address}](#apiv1accountaddress)
+        - [**_Changes_**](#changes-5)
+    - [Account](#account)
 - [Upcoming Changes in Binance Chain API v0.6.0](#upcoming-changes-in-binance-chain-api-v060)
-  * [HTTP API](#http-api_1)
-    + [/api/v1/trades](#apiv1trades)
-      - [Changes](#changes)
-  * [Extra data from your fullnode](#extra-data-from-your-fullnode)
-    + [Changes](#changes-1)
-  * [Extra data from your fullnode](#extra-data-from-your-fullnode)
-    + [Changes](#changes_3)
+  - [HTTP API](#http-api-4)
+    - [/api/v1/trades](#apiv1trades-1)
+        - [**_Changes_**](#changes-6)
+        - [**_GET_**](#get)
+    - [TradePage](#tradepage)
+    - [Trade](#trade-1)
+  - [Websocket](#websocket-1)
+    - [Trades](#trades)
+      - [Changes](#changes-7)
+  - [Extra data from your fullnode](#extra-data-from-your-fullnode)
+    - [Changes](#changes-8)
 - [Tendermint Changes](#tendermint-changes)
-  * [Upcoming Changes in v0.6.2](#upcoming-changes-in-v062)
+  - [Upcoming Changes in v0.6.2](#upcoming-changes-in-v062)
+    - [1. Better Handle Index database](#1-better-handle-index-database)
+    - [2. More configuration in config file](#2-more-configuration-in-config-file)
+    - [3. Change of Monitoring Metrics](#3-change-of-monitoring-metrics)
 
 # Upcoming Changes in Binance Chain API v0.6.4
 
@@ -35,88 +56,99 @@
 You will get `{"code":404,"message":"account not found"}` for newly created account:
 
 **Example**
+
 ```
 https://testnet-dex-asiapacific.binance.org/api/v1/account/tbnb10qpmrlsr4mq65xwgjd39xypkkpw3wm9c5e58xm
 ```
+
 Return:
+
 ```
 {
 code: 404,
 message: "account not found"
 }
 ```
+
 ### /api/v1/trades
 
-##### ***Changes***
+##### **_Changes_**
+
 Add `buyerSource` and `sellerSource` in the response Trade data structure. The Source Id reference can be found in https://github.com/binance-chain/BEPs/blob/master/BEP10.md.
 
 ### Trade
-| Name | Type | Description | Example |
-| ---- | ---- | ----------- | ------- |
-| baseAsset | string | base asset symbol |  |
-| blockHeight | long | block height |  |
-| buyFee | string | trading fee for the buyer address on the block of this trade |  |
-| buyerId | string | id of buyer |  |
-| buyerOrderId | string | order id for buyer |  |
-| buySingleFee | string | trading fee for the buyer address on this single trade | BNB:0.00000172; |
-| buyerSource | long | tx source of buy order | 1 |
-| price | string | trade price |  |
-| quantity | string | trade quantity |  |
-| quoteAsset | string | quote asset symbol |  |
-| sellFee | string | trading fee for the seller address on the block of this trade |  |
-| sellerId | string | seller ID |  |
-| sellerOrderId | string | seller order ID |  |
-| sellSingleFee | string | trading fee for the seller address on this single trade | BNB:0.00000216; |
-| sellerSource | long | tx source of sell order | 1 |
-| symbol | string | asset symbol |  |
-| tickType | string | enum [Unknown,SellTaker,BuyTaker,BuySurplus,SellSurplus,Neutral] |  |
-| time | long | trade time |  |
-| tradeId | string | trade ID |  |
+
+| Name          | Type   | Description                                                      | Example         |
+| ------------- | ------ | ---------------------------------------------------------------- | --------------- |
+| baseAsset     | string | base asset symbol                                                |                 |
+| blockHeight   | long   | block height                                                     |                 |
+| buyFee        | string | trading fee for the buyer address on the block of this trade     |                 |
+| buyerId       | string | id of buyer                                                      |                 |
+| buyerOrderId  | string | order id for buyer                                               |                 |
+| buySingleFee  | string | trading fee for the buyer address on this single trade           | BNB:0.00000172; |
+| buyerSource   | long   | tx source of buy order                                           | 1               |
+| price         | string | trade price                                                      |                 |
+| quantity      | string | trade quantity                                                   |                 |
+| quoteAsset    | string | quote asset symbol                                               |                 |
+| sellFee       | string | trading fee for the seller address on the block of this trade    |                 |
+| sellerId      | string | seller ID                                                        |                 |
+| sellerOrderId | string | seller order ID                                                  |                 |
+| sellSingleFee | string | trading fee for the seller address on this single trade          | BNB:0.00000216; |
+| sellerSource  | long   | tx source of sell order                                          | 1               |
+| symbol        | string | asset symbol                                                     |                 |
+| tickType      | string | enum [Unknown,SellTaker,BuyTaker,BuySurplus,SellSurplus,Neutral] |                 |
+| time          | long   | trade time                                                       |                 |
+| tradeId       | string | trade ID                                                         |                 |
 
 # Upcoming Changes in Binance Chain API v0.6.3
 
 ## HTTP API
 
 ### /api/v1/atomic-swaps
+
 ### /api/v1/atomic-swaps/{id}
 
-##### ***Changes***
+##### **_Changes_**
+
 The API is used to query atomic-swaps by id or by address.
 In the `AtomicSwap` data structure:
-* A new field `blockTimestamp` is added to indicate the block time in millisecond
-* The original `timestamp` is changed to indicate the timestamp for randomNumberHash calculation. Its unit is second.
-* `createTime` and `updateTime` are removed from `AtomicSwap`.
 
+- A new field `blockTimestamp` is added to indicate the block time in millisecond
+- The original `timestamp` is changed to indicate the timestamp for randomNumberHash calculation. Its unit is second.
+- `createTime` and `updateTime` are removed from `AtomicSwap`.
 
 ### AtomicSwap
 
-| Name | Type | Description | Example |
-| ---- | ---- | ----------- | ------- |
-| blockTimestamp | long | Timestamp of block in which the swap is initiated. The unit is millisecond. |  |
-| closedTime | long |  |  |
-| crossChain | integer |  |  |
-| expectedIncome | string |  |  |
-| expireHeight | long|  |  |
-| fromAddr | string |  |  |
-| inAmount | string |  |  |
-| outAmount | string |  |  |
-| randomNumber | string |  |  |
-| randomNumberHash | string |  |  |
-| recipientOtherChain | string |  |  |
-| status | integer |  |  |
-| swapId | string |  |  |
-| timestamp | long | The timestamp for randomNumberHash calculation, randomNumberHash=sha256(randomNumber, timestamp). The unit is second. |  |
-| toAddr | string |  |  |
+| Name                | Type    | Description                                                                                                           | Example |
+| ------------------- | ------- | --------------------------------------------------------------------------------------------------------------------- | ------- |
+| blockTimestamp      | long    | Timestamp of block in which the swap is initiated. The unit is millisecond.                                           |         |
+| closedTime          | long    |                                                                                                                       |         |
+| crossChain          | integer |                                                                                                                       |         |
+| expectedIncome      | string  |                                                                                                                       |         |
+| expireHeight        | long    |                                                                                                                       |         |
+| fromAddr            | string  |                                                                                                                       |         |
+| inAmount            | string  |                                                                                                                       |         |
+| outAmount           | string  |                                                                                                                       |         |
+| randomNumber        | string  |                                                                                                                       |         |
+| randomNumberHash    | string  |                                                                                                                       |         |
+| recipientOtherChain | string  |                                                                                                                       |         |
+| status              | integer |                                                                                                                       |         |
+| swapId              | string  |                                                                                                                       |         |
+| timestamp           | long    | The timestamp for randomNumberHash calculation, randomNumberHash=sha256(randomNumber, timestamp). The unit is second. |         |
+| toAddr              | string  |                                                                                                                       |         |
 
 ## WebSocket
 
 As described in https://docs.binance.org/api-reference/dex-api/ws-streams.html#6-book-depth-streams, you can now customize the returned level from orderbook. The default level is 20 and you can extend the level to 100, 500, or 1000 with compression enabled.
 
-* Example on mainnet:
+- Example on mainnet:
+
 ```
 var  marketDepth = new WebSocket("wss://dex-atlantic.binance.org/api/ws/NEXO-A84_BNB@marketDepth100");
 ```
-* Example on testnet:
+
+- Example on testnet:
+
 ```
 var  marketDepth = new WebSocket("wss://testnet-de.binance.org/api/ws/ALT-3B6_BNB@marketDepth100");
 ```
@@ -178,7 +210,7 @@ Example:
 }
 ```
 
-* ResponseCheckTx
+- ResponseCheckTx
 
 ```
 type ResponseCheckTx struct {
@@ -196,7 +228,7 @@ type ResponseCheckTx struct {
 }
 ```
 
-* ResponseDeliverTx
+- ResponseDeliverTx
 
 ```
 type ResponseDeliverTx struct {
@@ -214,7 +246,7 @@ type ResponseDeliverTx struct {
 }
 ```
 
-* ResponseBeginBlock
+- ResponseBeginBlock
 
 ```
 type ResponseBeginBlock struct {
@@ -225,7 +257,8 @@ type ResponseBeginBlock struct {
 }
 ```
 
-* ResponseEndBlock
+- ResponseEndBlock
+
 ```
 type ResponseEndBlock struct {
   ValidatorUpdates      []ValidatorUpdate `protobuf:"bytes,1,rep,name=validator_updates,json=validatorUpdates,proto3" json:"validator_updates"`
@@ -243,62 +276,62 @@ type ResponseEndBlock struct {
 
 ### /api/v2/transactions-in-block/{blockHeight}
 
-##### ***Changes***
+##### **_Changes_**
 
 This endpoint is used for getting all transactions in the block. Multi-send and multi-coin transactions are flattened as sub-transactions.
 
 ### TxV2
 
-| Name | Type | Description | Example |
-| ---- | ---- | ----------- | ------- |
-| blockHeight | long |  |  |
-| code | integer |  | 0 |
-| data | string |  |  |
-| fromAddr | string |  |  |
-| memo | string |  |  |
-| orderId | string | Optional. Available when the transaction type is NEW_ORDER |  |
-| proposalId | string | Optional. Available when the transaction type is PROPOSAL |  |
-| sequence | long |  |  |
-| source | long |  |  |
-| subTransactions | [ [SubTx](#subtx) ] | Optional. Available when the transaction has sub-transactions, such as multi-send transaction or a transaction have multiple assets |  |
-| swapId | string | Optional. Available when the transaction type is one of HTL_TRANSFER, CLAIM_HTL, REFUND_HTL, DEPOSIT_HTL |  |
-| timeStamp | dateTime |  |  |
-| toAddr | string |  |  |
-| txAsset | string |  |  |
-| txFee | string |  |  |
-| txHash | string |  |  |
-| txType | string |  |  |
-| value | string |  |  |
+| Name            | Type                | Description                                                                                                                         | Example |
+| --------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| blockHeight     | long                |                                                                                                                                     |         |
+| code            | integer             |                                                                                                                                     | 0       |
+| data            | string              |                                                                                                                                     |         |
+| fromAddr        | string              |                                                                                                                                     |         |
+| memo            | string              |                                                                                                                                     |         |
+| orderId         | string              | Optional. Available when the transaction type is NEW_ORDER                                                                          |         |
+| proposalId      | string              | Optional. Available when the transaction type is PROPOSAL                                                                           |         |
+| sequence        | long                |                                                                                                                                     |         |
+| source          | long                |                                                                                                                                     |         |
+| subTransactions | [ [SubTx](#subtx) ] | Optional. Available when the transaction has sub-transactions, such as multi-send transaction or a transaction have multiple assets |         |
+| swapId          | string              | Optional. Available when the transaction type is one of HTL_TRANSFER, CLAIM_HTL, REFUND_HTL, DEPOSIT_HTL                            |         |
+| timeStamp       | dateTime            |                                                                                                                                     |         |
+| toAddr          | string              |                                                                                                                                     |         |
+| txAsset         | string              |                                                                                                                                     |         |
+| txFee           | string              |                                                                                                                                     |         |
+| txHash          | string              |                                                                                                                                     |         |
+| txType          | string              |                                                                                                                                     |         |
+| value           | string              |                                                                                                                                     |         |
 
 ### /api/v1/timelocks/{account_addr}
 
-##### ***Changes***
+##### **_Changes_**
 
 This new function is for getting the whole timelock history of an address.
 
 ### TimeLocks
 
-| Name | Type | Description | Example |
-| ---- | ---- | ----------- | ------- |
-| id | long | The record id of the timelock transaction |  |
-| description | string | The description of the timelock transaction |  |
-| amount | [  ] |  |  |
-| locktime | string | The available unlock time |  |
+| Name        | Type   | Description                                 | Example |
+| ----------- | ------ | ------------------------------------------- | ------- |
+| id          | long   | The record id of the timelock transaction   |         |
+| description | string | The description of the timelock transaction |         |
+| amount      | [ ]    |                                             |         |
+| locktime    | string | The available unlock time                   |         |
 
 ### /api/v1/timelock/{account_addr}?(id={recordid})
 
-##### ***Changes***
+##### **_Changes_**
 
 This new function is for getting the timelock history of an address by id.
 
 ### TimeLocks
 
-| Name | Type | Description | Example |
-| ---- | ---- | ----------- | ------- |
-| id | long | The record id of the timelock transaction |  |
-| description | string | The description of the timelock transaction |  |
-| amount | [  ] |  |  |
-| locktime | string | The available unlock time |  |
+| Name        | Type   | Description                                 | Example |
+| ----------- | ------ | ------------------------------------------- | ------- |
+| id          | long   | The record id of the timelock transaction   |         |
+| description | string | The description of the timelock transaction |         |
+| amount      | [ ]    |                                             |         |
+| locktime    | string | The available unlock time                   |         |
 
 # Upcoming Changes in Binance Chain API v0.6.1
 
@@ -310,21 +343,22 @@ In the latest update of HTTP API for testnet, there are the following changes:
 
 ### /api/v1/account/{address}
 
-##### ***Changes***
+##### **_Changes_**
+
 In the `Account` data structure, a new field `flags` is added to indicate the constrains for this address.
 
-* `flags` is used to indicate which script needs to be executed.
+- `flags` is used to indicate which script needs to be executed.
 
 ### Account
 
-| Name | Type | Description | Example |
-| ---- | ---- | ----------- | ------- |
-| account_number | integer |  |  |
-| address | string (address) |  |  |
-| balances | [ [Balance](#balance) ] |  |  |
-| public_key | [ integer ] | Public key bytes |  |
-| flags | integer | indicate additional check for this account|  |
-| sequence | long | sequence is for preventing replay attack |  |
+| Name           | Type                    | Description                                | Example |
+| -------------- | ----------------------- | ------------------------------------------ | ------- |
+| account_number | integer                 |                                            |         |
+| address        | string (address)        |                                            |         |
+| balances       | [ [Balance](#balance) ] |                                            |         |
+| public_key     | [ integer ]             | Public key bytes                           |         |
+| flags          | integer                 | indicate additional check for this account |         |
+| sequence       | long                    | sequence is for preventing replay attack   |         |
 
 # Upcoming Changes in Binance Chain API v0.6.0
 
@@ -334,17 +368,19 @@ As you know, There are some accelerate nodes which provides some advanced API se
 
 In the latest update of HTTP API for testnet, there are the following changes:
 
-
 ### /api/v1/trades
+
 ---
 
-##### ***Changes***
-In the `Trade` data structure, a new field `Ticker Type` is added. The enumerate values are: "Unknown", "SellTaker","BuyTaker","BuySurplus","SellSurplus","Neutral". When there is a maker and taker, `SellTaker` and  `BuyTaker` are used to indicate the side. When both sides are taker,  `BuySurplus`, `SellSurplus` and `Neutral` are used to indicate market pressure.`Unknown` mean the type is not possible to define.
+##### **_Changes_**
 
-* `buySingleFee` is used to show trading fee for the buyer address on this single trade.
-* `sellSingleFee`is used to show  trading fee for the seller address on this single trade.
+In the `Trade` data structure, a new field `Ticker Type` is added. The enumerate values are: "Unknown", "SellTaker","BuyTaker","BuySurplus","SellSurplus","Neutral". When there is a maker and taker, `SellTaker` and `BuyTaker` are used to indicate the side. When both sides are taker, `BuySurplus`, `SellSurplus` and `Neutral` are used to indicate market pressure.`Unknown` mean the type is not possible to define.
 
-##### ***GET***
+- `buySingleFee` is used to show trading fee for the buyer address on this single trade.
+- `sellSingleFee`is used to show trading fee for the seller address on this single trade.
+
+##### **_GET_**
+
 **Summary:** Get market trades.
 
 **Description:** Gets a list of historical trades.
@@ -353,77 +389,75 @@ In the `Trade` data structure, a new field `Ticker Type` is added. The enumerate
 
 **Rate Limit:** 5 requests per IP per second.
 
-
 **Parameters**
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
-| address | query | the buyer/seller address | No | string |
-| buyerOrderId | query | buyer order id | No | string |
-| end | query | end time in Milliseconds | No | long |
-| height | query | block height | No | long |
-| limit | query | default 500; max 1000. | No | integer |
-| offset | query | start with 0; default 0. | No | integer |
-| quoteAsset | query | quote asset | No | string |
-| sellerOrderId | query | seller order id | No | string |
-| side | query | order side. 1 for buy and 2 for sell. | No | integer |
-| start | query | start time in Milliseconds | No | long |
-| symbol | query | symbol | No | string |
-| total | query | total number required, 0 for not required and 1 for required; default not required, return total=-1 in response | No | integer |
+| Name          | Located in | Description                                                                                                     | Required | Schema  |
+| ------------- | ---------- | --------------------------------------------------------------------------------------------------------------- | -------- | ------- |
+| address       | query      | the buyer/seller address                                                                                        | No       | string  |
+| buyerOrderId  | query      | buyer order id                                                                                                  | No       | string  |
+| end           | query      | end time in Milliseconds                                                                                        | No       | long    |
+| height        | query      | block height                                                                                                    | No       | long    |
+| limit         | query      | default 500; max 1000.                                                                                          | No       | integer |
+| offset        | query      | start with 0; default 0.                                                                                        | No       | integer |
+| quoteAsset    | query      | quote asset                                                                                                     | No       | string  |
+| sellerOrderId | query      | seller order id                                                                                                 | No       | string  |
+| side          | query      | order side. 1 for buy and 2 for sell.                                                                           | No       | integer |
+| start         | query      | start time in Milliseconds                                                                                      | No       | long    |
+| symbol        | query      | symbol                                                                                                          | No       | string  |
+| total         | query      | total number required, 0 for not required and 1 for required; default not required, return total=-1 in response | No       | integer |
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | OK | [TradePage](#tradepage) |
-| 400 | Bad Request | [Error](#error) |
-| 404 | Not Found |  |
-| default | Generic error response | [Error](#error) |
-
+| Code    | Description            | Schema                  |
+| ------- | ---------------------- | ----------------------- |
+| 200     | OK                     | [TradePage](#tradepage) |
+| 400     | Bad Request            | [Error](#error)         |
+| 404     | Not Found              |                         |
+| default | Generic error response | [Error](#error)         |
 
 ### TradePage
 
-| Name | Type | Description | Example |
-| ---- | ---- | ----------- | ------- |
-| total | long |  |  |
-| trade | [ [Trade](#trade) ] |  |  |
+| Name  | Type                | Description | Example |
+| ----- | ------------------- | ----------- | ------- |
+| total | long                |             |         |
+| trade | [ [Trade](#trade) ] |             |         |
 
 ### Trade
 
-| Name | Type | Description | Example |
-| ---- | ---- | ----------- | ------- |
-| baseAsset | string | base asset |  |
-| blockHeight | long | block height |  |
-| buyFee | string | trading fee for the buyer address on the block of this trade |  |
-| buyerId | string | id of buyer |  |
-| buyerOrderId | string | order id for buyer |  |
-| **buySingleFee** | string | trading fee for the buyer address on this single trade |  |
-| price | string | trade price |  |
-| quantity | string | trade quantity |  |
-| quoteAsset | string | quote asset |  |
-| sellFee | string | trading fee for the seller address on the block of this trade |  |
-| sellerId | string | seller ID |  |
-| sellerOrderId | string | seller order ID |  |
-| **sellSingleFee** | string | trading fee for the seller address on this single trade |  |
-| symbol | string | asset symbol |  |
-| **tickType** | string | enum [Unknown,SellTaker,BuyTaker,BuySurplus,SellSurplus,Neutral] |  |
-| time | long | trade time |  |
-| tradeId | string | trade ID |  |
-
-
+| Name              | Type   | Description                                                      | Example |
+| ----------------- | ------ | ---------------------------------------------------------------- | ------- |
+| baseAsset         | string | base asset                                                       |         |
+| blockHeight       | long   | block height                                                     |         |
+| buyFee            | string | trading fee for the buyer address on the block of this trade     |         |
+| buyerId           | string | id of buyer                                                      |         |
+| buyerOrderId      | string | order id for buyer                                               |         |
+| **buySingleFee**  | string | trading fee for the buyer address on this single trade           |         |
+| price             | string | trade price                                                      |         |
+| quantity          | string | trade quantity                                                   |         |
+| quoteAsset        | string | quote asset                                                      |         |
+| sellFee           | string | trading fee for the seller address on the block of this trade    |         |
+| sellerId          | string | seller ID                                                        |         |
+| sellerOrderId     | string | seller order ID                                                  |         |
+| **sellSingleFee** | string | trading fee for the seller address on this single trade          |         |
+| symbol            | string | asset symbol                                                     |         |
+| **tickType**      | string | enum [Unknown,SellTaker,BuyTaker,BuySurplus,SellSurplus,Neutral] |         |
+| time              | long   | trade time                                                       |         |
+| tradeId           | string | trade ID                                                         |         |
 
 ## Websocket
 
 ### Trades
+
 #### Changes
 
 In received Payload of `trades`, a new filed `tt` is added. Its enumerate values are:
-* 0: Unknown
-* 1: SellTaker
-* 2: BuyTaker
-* 3: BuySurplus
-* 4: SellSurplus
-* 5: Neutral
+
+- 0: Unknown
+- 1: SellTaker
+- 2: BuyTaker
+- 3: BuySurplus
+- 4: SellSurplus
+- 5: Neutral
 
   **Received Payload:**
 
@@ -463,23 +497,21 @@ In received Payload of `trades`, a new filed `tt` is added. Its enumerate values
 
 ## Extra data from your fullnode
 
-All those [extra info](https://docs.binance.org/get-extra-data-from-fullnode.html#publish-different-messages-to-local-files ) can also be found in exported data from your fullnode.
+All those [extra info](https://docs.binance.org/get-extra-data-from-fullnode.html#publish-different-messages-to-local-files) can also be found in exported data from your fullnode.
 
 ### Changes
+
 In `trade` data structure, there are five new fields: `SSrc`,`BSrc`,`SSingleFee`, `BSingleFee` and `TickerType`.
 
-* `SSrc`: Source code of Sell order transaction
-* `BSrc`: Source code of Buy order transaction
-* `SSingleFee`: fee of matched sell order
-* `BSingleFee`: fee of matched buy order
-* `TickerType`: ticker type
+- `SSrc`: Source code of Sell order transaction
+- `BSrc`: Source code of Buy order transaction
+- `SSingleFee`: fee of matched sell order
+- `BSingleFee`: fee of matched buy order
+- `TickerType`: ticker type
 
 In `Order` data structure, there is a new field: `singlefee`. This is used to show the fee of this order.
 
-
-
 For example:
-
 
 ```json
 "Height":3154,
@@ -586,9 +618,11 @@ For example:
 # Tendermint Changes
 
 ## Upcoming Changes in v0.6.2
+
 ### 1. Better Handle Index database
 
 Now Tendermint will recover index data from restart or crash. You can see the latest indexed height from status:
+
 ```
 {
 "jsonrpc": "2.0",
@@ -606,23 +640,22 @@ Now Tendermint will recover index data from restart or crash. You can see the la
 ...
 }
 ```
+
 ### 2. More configuration in config file
 
-A new field is added: ` skip_tx_from_persistent` under mempool part. If you set this to be True, your node will not broadcast transactions to its persistent peers.
+A new field is added: `skip_tx_from_persistent` under mempool part. If you set this to be True, your node will not broadcast transactions to its persistent peers.
 
 ### 3. Change of Monitoring Metrics
 
-* Add the following metrics:
-   * IndexHegiht：This metric will show the latest indexed height.
-   * Height: This metric will show the latest  height of the blockchain
-   * BlockIntervalSeconds: This metric will show the Time between this and the last block
-   * NumTxs: This metric will show the total  number of transactions in the current block
-   * BlockSizeBytes: This metric will show the size of the block
-   * TotalTxs: This metric will show the total  number of transactions in history
-   * CommittedHeight: This metric will show the latest block height
-   * PermanentPeerSetSize: This metric will show the number of peers considered as good
-   * PermanentPeers: This metric will show the details of peers considered as good
-   * DecayPeerSetSize:  This metric will show the number of peers considered as bad
-* Remove metrics of ReceivedTx, PeerSendBytesTotal, PeerReceiveBytesTotal
-
-
+- Add the following metrics:
+  - IndexHegiht：This metric will show the latest indexed height.
+  - Height: This metric will show the latest height of the blockchain
+  - BlockIntervalSeconds: This metric will show the Time between this and the last block
+  - NumTxs: This metric will show the total number of transactions in the current block
+  - BlockSizeBytes: This metric will show the size of the block
+  - TotalTxs: This metric will show the total number of transactions in history
+  - CommittedHeight: This metric will show the latest block height
+  - PermanentPeerSetSize: This metric will show the number of peers considered as good
+  - PermanentPeers: This metric will show the details of peers considered as good
+  - DecayPeerSetSize: This metric will show the number of peers considered as bad
+- Remove metrics of ReceivedTx, PeerSendBytesTotal, PeerReceiveBytesTotal

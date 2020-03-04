@@ -93,16 +93,16 @@
         "title": "FAQ"
       },
       "fullnode": {
-        "title": "Full Node"
+        "title": "Run a Full Node"
       },
       "fullnodeissues": {
-        "title": "Full Node Issues"
+        "title": "Common Full Node Issues"
       },
       "Genesis-file": {
         "title": "Genesis-file"
       },
       "extra-data-from-fullnode": {
-        "title": "Get Extra Data from Full Node"
+        "title": "Additional Data from Full Node"
       },
       "get-started": {
         "title": "get-started"

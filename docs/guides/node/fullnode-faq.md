@@ -1,28 +1,7 @@
-# Common Issues When Running a Full Node
-
-- [Common Issues](#common-issues)
-  * [AppHash Confliction](#apphash-confliction)
-  * [Peer connection error](#peer-connection-error)
-  * [Connection Timeout](#connection-timeout)
-  * [Out of memory](#out-of-memory)
-  * [No priv_validator_state.json after reset](#no-priv-validator-statejson-after-reset)
-  * [`bnbchaind` crashes because of `too many open files`](#-bnbchaind--crashes-because-of--too-many-open-files-)
-  * [Forget to Upgrade](#forget-to-upgrade)
-  * [`bnbchaind` is not properly killed](#-bnbchaind--is-not-properly-killed)
-  * [Cannot start `bnbchaind`](#cannot-start--bnbchaind-)
-  * [Cannot query a specific block](#cannot-query-a-specific-block)
-
-### How to monitor your full node syncing process?
-
-* You can check the current height of full node by visiting `localhost:26657/status`
-* You can check the log info in your log under your $BNCHOME.<br/>
-Monitor the output with:
-```
-tail -f $BNCHOME/bnc.log
-```
-### Common Issues
-
-If you start running a full node from scratch, you are likely to encounter the following issues:
+---
+id: nodeissue
+title: Common Issues When Running a Full Node
+---
 
 #### AppHash Confliction
 

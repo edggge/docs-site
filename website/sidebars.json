@@ -56,15 +56,7 @@
     ]
   },
   "api-sidebar": {
-    "Overview": ["api-reference/api-reference"],
-    "Node RPC": ["api/rpc/rpc", "api/rpc/cli", "api/rpc/http"],
-    "Javascript SDK": ["api/javascript"],
-    "Go SDK": [
-      "api/go/go-intro",
-      "api/go/go-example",
-      "api/go/go-api",
-      "api/go/go-websocket"
-    ]
+    "Overview": ["api-reference/api-reference"]
   },
   "enduser-sidebar": {
     "End User Guide": [

@@ -380,9 +380,6 @@
       "Run a node": "Run a node",
       "Walkthroughs": "Walkthroughs",
       "Overview": "Overview",
-      "Node RPC": "Node RPC",
-      "Javascript SDK": "Javascript SDK",
-      "Go SDK": "Go SDK",
       "End User Guide": "End User Guide"
     }
   },

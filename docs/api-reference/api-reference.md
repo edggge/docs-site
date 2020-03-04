@@ -5,7 +5,7 @@ title: API Reference
 
 We use Swagger to document the usage of our APIs, with code snippets for both REST calls and SDK samples.
 
-## Documentation
+## API Reference
 
 | [API Documentation](https://docs.binance.org/api-swagger/) | [RPC API Documentation](https://docs.binance.org/rpc-swagger/)                            |
 | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
@@ -26,11 +26,11 @@ Binance Chain offers language-specific SDKs that abstract our REST APIs and Node
 
 ### Community SDKs
 
-| Language | Link                                                     | Docs                                                                                                   |
-| -------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| C++      | [Github](https://github.com/binance-chain/cplusplus-sdk) | [Docs](https://github.com/binance-chain/cplusplus-sdk/wiki)                                            |
-| C#       | [Github](ht;tps://github.com/binance-chain/csharp-sdk)   | [Docs](https://github.com/binance-chain/csharp-sdk)                                                    |
-| Python   | [Github](https://github.com/binance-chain/python-sdk)    | [Docs](https://python-binance-chain.readthedocs.io/en/latest/binance-chain.html#module-binance_chain)) |
-| Swift    | [Github](https://github.com/binance-chain/swift-sdk)     | [Docs](https://github.com/binance-chain/swift-sdk/blob/master/README.md)                               |
+| Language | Link                                                     | Docs                                                                                                  |
+| -------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| C++      | [Github](https://github.com/binance-chain/cplusplus-sdk) | [Docs](https://github.com/binance-chain/cplusplus-sdk/wiki)                                           |
+| C#       | [Github](ht;tps://github.com/binance-chain/csharp-sdk)   | [Docs](https://github.com/binance-chain/csharp-sdk)                                                   |
+| Python   | [Github](https://github.com/binance-chain/python-sdk)    | [Docs](https://python-binance-chain.readthedocs.io/en/latest/binance-chain.html#module-binance_chain) |
+| Swift    | [Github](https://github.com/binance-chain/swift-sdk)     | [Docs](https://github.com/binance-chain/swift-sdk/blob/master/README.md)                              |
 
 If you are interested in developing new SDKs in other languages (e.g. Rust, Haskell), please contact us directly.

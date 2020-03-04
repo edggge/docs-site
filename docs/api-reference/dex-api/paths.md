@@ -1,6 +1,14 @@
 HTTP API
 ========
-The Binance Chain HTTP API provides access to a Binance Chain node deployment and market data services.
+Within the ecosystem of Binance Chain, there are several accelerated nodes which provides more secure and faster lines to access Binance Chain and DEX data service including HTTp API.
+For testnet, there are 2 accelerated nodes setup as below. API users should try to use them directly.
+  * testnet-dex-atlantic.binance.org
+  * testnet-dex-asiapacific.binance.org
+For mainnet, there are more accelerated nodes.
+  * dex-atlantic.binance.org
+  * dex-asiapacific.binance.org
+  * dex-european.binance.org
+
 
 **Version:** 1.0.0
 
@@ -131,7 +139,7 @@ The Binance Chain HTTP API provides access to a Binance Chain node deployment an
 | ---- | ----------- | ------ |
 | 200 | Success | [Account](#account) |
 | 400 | Bad Request | [Error](#error) |
-| 404 | Not Found |  |
+| 404 | Not Found | [Error](#error) |
 | default | Generic error response | [Error](#error) |
 
 ### /api/v1/account/{address}/sequence
@@ -716,6 +724,7 @@ If the time window is larger than limits, only the first n klines will return. I
 **Rate Limit:** 5 request per IP per second.
 
 **Rate Limit:** 60 requests per IP per minute.
+
 
 **Parameters**
 

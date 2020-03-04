@@ -98,6 +98,9 @@
       "fullnodeissues": {
         "title": "Full Node Issues"
       },
+      "Genesis-file": {
+        "title": "Genesis-file"
+      },
       "extra-data-from-fullnode": {
         "title": "Get Extra Data from Full Node"
       },
@@ -122,6 +125,9 @@
       "guides/concepts/fees": {
         "title": "Fees"
       },
+      "guides/concepts/genesis": {
+        "title": "Genesis File"
+      },
       "guides/concepts/governance": {
         "title": "Governance"
       },
@@ -143,6 +149,9 @@
       "guides/concepts/walletconnect": {
         "title": "Wallet Connect"
       },
+      "guides/connect/lightd": {
+        "title": "Light Client"
+      },
       "guides/intro/access": {
         "title": "Accessing Binance Chain"
       },
@@ -162,14 +171,35 @@
       "guides/intro/make-transfer": {
         "title": "Make a Transfer"
       },
-      "guides/node/fullnode": {
-        "title": "Run a Full Node"
+      "guides/intro/trading-interface": {
+        "title": "Binance DEX Trading Interface"
       },
-      "guides/node/lightnode": {
-        "title": "Light Node"
+      "guides/node/extrainfo": {
+        "title": "Get Extra Data From Your Full Node"
+      },
+      "guides/node/nodeissue": {
+        "title": "Common Issues When Running a Full Node"
+      },
+      "guides/node/install": {
+        "title": "Install Binaries"
+      },
+      "guides/node/joinmainnet": {
+        "title": "Join Mainnet"
+      },
+      "guides/node/jointestnet": {
+        "title": "Join Testnet"
+      },
+      "guides/node/localnetwork": {
+        "title": "Run a Local Testnet"
       },
       "guides/node/nodetypes": {
         "title": "Types of Nodes"
+      },
+      "guides/node/synctype": {
+        "title": "Different Sync Types"
+      },
+      "guides/node/upgrade": {
+        "title": "Upgrade"
       },
       "hardware-wallets": {
         "title": "Hardware Wallets"

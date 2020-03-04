@@ -1,10 +1,7 @@
 ---
 id: architecture
-title: Architecture
+title: architecture
 ---
-
-- [ ] https://docs.binance.org/blockchain.html
-- [ ] Hyperlink to existing document
 
 ## Consensus Details
 

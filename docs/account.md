@@ -15,7 +15,7 @@ An `Account` on Binance Chain consists of:
 
 - _Locked_ assets are in an outstanding order. Once the order terminates (filled, cancelled, expired), the assets will be unlocked.
 
-- _Frozen_ assets are frozen via [freeze transactions]().
+- _Frozen_ assets are frozen via freeze transactions.
 
 ## Create an Account
 
@@ -25,13 +25,13 @@ You can also create a new key and you will get a new mnemonic with `bnbcli` or `
 <!--Mainnet-->
 
 ```bash
-$ ./bnbcli keys add new_key
+$ bnbcli keys add new_key
 ```
 
 <!--Testnet-->
 
 ```bash
-$ ./tbnbcli keys add new_key
+$ tbnbcli keys add new_key
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -51,6 +51,17 @@ It is the only way to recover your account if you ever forget your password.
 napkin degree boring custom differ smart bundle ball length lyrics auto forest jeans awake entry vocal there repeat rule churn picnic promote screen skull
 ```
 
+Your keys are stored in the `~/.bnbcli` in your root directory.
+
+You can use the CLI to see a list of keys that are registered with `bnbcli`:
+
+```shell
+$ bnbcli keys list
+NAME:	TYPE:	ADDRESS:						            PUBKEY:
+new_key	local	bnb1yg3egrrzzsck46mj0wtstm9f6209pr0yej0t08	bnbp1addwnpepqt5jl5vff6flxv5xgvlqupea3ktdndqc3hysnmjmsckv4mmkce5tyjcx6dv
+test	local	bnb1de3nk76qmkzxalpnhk8gqw6yhuk098a5c208q0	bnbp1addwnpepqfenf8ldduvccsn9tl2r0v46rsvz7h02l563pkv2k43nh3zxufawze30uc0
+```
+
 ## Restoring an Account
 
 You can restore your account using your seed phrase mnemonic.
@@ -59,13 +70,13 @@ You can restore your account using your seed phrase mnemonic.
 <!--Mainnet-->
 
 ```bash
-$ ./bnbcli keys add test --recover
+$ bnbcli keys add test --recover
 ```
 
 <!--Testnet-->
 
 ```bash
-$ ./tbnbcli keys add test --recover
+$ tbnbcli keys add test --recover
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
@@ -155,7 +166,7 @@ The `Account Number` is an internal identifier for the account. It is unique to 
 
 The `Sequence Number` allows Binance Chain to prevent [replay attacks](https://en.wikipedia.org/wiki/Replay_attack). Every new transaction, when broadcast, should include an increment over the current `Sequence Number`. Once the transaction is recorded on the blockchain, the account's `Sequence Number` is incremented to the latest transaction's.
 
-> This is similar to Cosmos' implementation of the Sequence Number, or Ethereum's [nonce](https://ethereum.stackexchange.com/questions/27432/what-is-nonce-in-ethereum-how-does-it-prevent-double-spending)
+> This is conceptually similar to Cosmos' implementation of the Sequence Number, or Ethereum's [nonce](https://ethereum.stackexchange.com/questions/27432/what-is-nonce-in-ethereum-how-does-it-prevent-double-spending)
 
 This logic forces the client to be aware of the current `Sequence Number`, either by reading from the
 blockchain via API, or keep the counting locally by themselves. The recommended way is to keep

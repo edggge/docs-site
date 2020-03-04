@@ -15,7 +15,7 @@ Then click `Download Keystore File` and you will get a keystore file and be dire
 
 ![create key](../assets/create_key_2.png)
 
-- You can restore your key [here](https://testnet.binance.org/unlock)
+- You can unlock your wallet and get access to keys [here](https://testnet.binance.org/unlock)
 
 Choose `Mnenomic Phrase`, paste the mnemonic you get above and set your session password:
 

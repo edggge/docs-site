@@ -49,13 +49,16 @@ transferred. The fully filled orders would be removed from the order book, while
 partially filled GTE would stay on the order book until it is filled by others; unfilled or
 partially filled IOC order would be canceled.
 
+### Order Lifecycle
+
+Valid orders sent to the matching engine are confirmed immediately and are in the **Ack** state andinvalid orders will be **FailedMatching** state. GTE and IOC orders have different lifecycle.
+
+For IOC order, if an IOC order executes against another order immediately as a whole, the order is considered **FullyFill**. An IOC order can execute in part and ends in **IocExpire** state. If no part of the IOC order is filled, will be considered **IocNoFill**.
+
+For GTE order, if a GTE order can execute against another order as a whole, the order is considered **FullyFill**. Any part of the order not filled immediately, will be considered open. Orders will stay in the open until it's canceled or subsequently filled by new orders. Canceled GTE orders are in the **Canceled** state. Orders that are no longer eligible for matching are in the **Expired** state.
+
 ### Order Expire
-
-Order would expire after 72 hours once it is booked on a block. A whole order book scan would happen
-every UTC mid-night to filter out all the expired orders. After the scan, all the expired orders
-would be removed from the order book, the locked quantity in the account would be unlocked.
-Before this action all the existing orders in the order book is subject to matching.
-
+Order would expire after 72 hours once it is booked on a block. A whole order book scan would happen every UTC mid-night to filter out all the expired orders. After the scan, all the expired orders would be removed from the order book, the locked quantity in the account would be unlocked. Before this action all the existing orders in the order book is subject to matching.
 
 ## Precision
 
@@ -107,8 +110,7 @@ Burn Asset | N/A | 0.5 BNB | N
 Freeze/Unfreeze Asset | N/A | 0.005 BNB | N
 Lock/unlock/relock Asset | N/A | 0.01 BNB | N
 List Asset | N/A | 1000 BNB | N
-Submit List Proposal | N/A | 5 BNB | N
-Submit Delist Proposal | N/A | 1000 BNB | N
+Submit Proposal | N/A | 5 BNB | N
 Deposit | N/A | 0.000625 BNB | N
 Enable Memo Check | N/A | 1 BNB | N
 Disable Memo Check | N/A | 1 BNB | N
@@ -125,7 +127,7 @@ View system fees updated in real time [here](https://dex.binance.org/api/v1/fees
 
 
 ### Multi-send Fees
-`bnbcli`  offers you a multi-send command to transfer multiple tokens to multiple people. 20% discount is available for `multi-send` transactions. For now, `multi-send` transaction will send some tokens from one address to multiple output addresses. If the count of output address is bigger than the threshold, currently it's 2, then the total transaction fee is  0.001 BNB per token per address.
+`bnbcli`  offers you a multi-send command to transfer multiple tokens to multiple people. 20% discount is available for `multi-send` transactions. For now, `multi-send` transaction will send some tokens from one address to multiple output addresses. If the count of output address is bigger than the threshold, currently it's 2, then the total transaction fee is  0.0003 BNB per token per address.
 For example, if you send 3 ABC token,1 SAT token and 1 ABC to 3 different addresses.
 
 ```json
@@ -181,8 +183,7 @@ Burn Asset | N/A | 0.5 BNB | N
 Freeze/Unfreeze Asset | N/A | 0.005 BNB | N
 Lock/unlock/relock Asset | N/A | 0.01 BNB | N
 List Asset | N/A | 1000 BNB | N
-Submit List Proposal | N/A | 5 BNB | N
-Submit Delist Proposal | N/A | 1000 BNB | N
+Submit Proposal | N/A | 5 BNB | N
 Deposit | N/A | 0.000625 BNB | N
 Enable Memo Check | N/A | 1 BNB | N
 Disable Memo Check | N/A | 1 BNB | N

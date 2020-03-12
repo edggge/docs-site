@@ -1,7 +1,7 @@
 
 # How to contribute to Binance Chain Documentations project
 
-Your contributions to the [Binance Chaink](https://www.stellar.org/) will help build a fast and secure decentralized digital asset exchange.
+Your contributions to the [Binance Chain](https://www.binance.org/) will help build a fast and secure decentralized digital asset exchange.
 
 We want to make it as easy as possible to contribute changes that help the Binance Chain grow and thrive. There are a few guidelines that we ask contributors to follow so that we can merge your changes quickly.
 

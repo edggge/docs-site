@@ -1,7 +1,11 @@
-- [ ] https://docs.binance.org/account.html
-- [ ] https://docs.binance.org/chain-access.html#account-and-sequence-number
+---
+id: accounts
+title: Accounts
+---
 
 Whenever a new address receives an asset, the corresponding transaction would create an Account for that address, which contains balances across all assets that are owned on this address.
+
+## Account Balance
 
 The balance (the amount of tokens) of each asset is composed of 3 different parts:
 
@@ -24,3 +28,13 @@ Please note that the amount is boosted by e^8 for the decimal part.
 ```
 
 From the ouput you can see that this account account_number is 406226 and its sequence is 29. This is the important information about this account.
+
+## Account and Sequence Number
+After Account is created, besides the balances, Account also contains:
+
+- Account Number: an internal identifier for the account
+- Sequence Number: an ever-changing integer.
+
+The `Sequence Number` is the way how Binance Chain prevents Replay Attack (the idea is borrowed from Cosmos network, but varies a bit in handling). Every transaction should have a new Sequence Number increased by 1 from the current latest sequence number of the Account, and after this transaction is recorded on the block chain, the Sequence Number will be set to the same number as the one of latest transaction.
+
+This logic forces the client to be aware of the current Sequence Number, either by reading from the blockchain via API, or keep the counting locally by themselves. The recommended way is to keep counting locally and re-synchronize from the blockchain periodically.

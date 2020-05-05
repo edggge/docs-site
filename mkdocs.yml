@@ -25,7 +25,7 @@ extra_css:
        - stylesheets/codehilite.css
 nav:
   - Home: index.md
-  - Get Started:
+  - Binance Chain:
     - Introduction: guides/intro.md
     - Create Address: guides/create-address.md
     - Binance DEX Trading: guides/trading-interface.md
@@ -54,6 +54,9 @@ nav:
          - Threshold Signature Scheme: guides/concepts/threshold-signature-scheme.md
          - Atomic Swap: atomic-swap.md
          - WalletConnect: guides/concepts/walletconnect.md
+  - Binance Smart Chain:
+    - Introduction: smart-chain/guides/bsc-intro.md
+    - MetaMask Guides: smart-chain/guides/metamask.md
   - Developers:
     - Binance Chain Fullnode:
       - Install: guides/node/install.md
@@ -106,7 +109,19 @@ nav:
   - 币安DEX中文群: https://t.me/BinanceDEXchangeCN
   - 币安链公告频道: https://t.me/Binance_DEX_ChineseAnnouncements
   - FAQ:
-    - v0.5: faq/faq.md
+    - Binance Chain FAQ: faq/faq.md
+    - Binance Smart Chain FAQ:
+      - General:
+        - Info: faq/bsc/general.md
+        - Binance Smart Chain: faq/bsc/bsc.md
+        - Ecosystem: faq/bsc/eco.md
+      - Token:
+        - Intro: faq/bsc/token.md
+        - BEPs: faq/bsc/bep.md
+      - Staking:
+        - Validator: faq/bsc/val.md
+        - Delegator: faq/bsc/del.md
+      - Crosschain: faq/bsc/del.md
   - More Help: resources.md
   - Contributing: CONTRIBUTING.md
 

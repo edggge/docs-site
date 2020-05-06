@@ -56,6 +56,9 @@ nav:
          - WalletConnect: guides/concepts/walletconnect.md
   - Binance Smart Chain:
     - Introduction: smart-chain/guides/bsc-intro.md
+    - Concepts:
+      - Consensus: smart-chain/guides/concepts/consensus.md
+      - Cross-chain: smart-chain/guides/concepts/cross-chain.md
     - MetaMask Guides: smart-chain/guides/metamask.md
   - Developers:
     - Binance Chain Fullnode:

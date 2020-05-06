@@ -15,8 +15,6 @@ The Binance Smart Chain also supports EVM-compatible smart contracts and protoco
 * **Distributed with on-chain governance**: Proof of Staked Authority brings in decentralization and community participants.
 As the native token, BNB will serve as both the gas of smart contract execution and tokens for staking.
 
-## Participate
-
 
 ## Resources:
 * [White Paper](http://binance.org/en#smartChain)

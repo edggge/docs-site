@@ -59,6 +59,8 @@ nav:
     - Concepts:
       - Consensus: smart-chain/guides/concepts/consensus.md
       - Cross-chain: smart-chain/guides/concepts/cross-chain.md
+    - Validator:
+      - Guideline: smart-chain/validator/guideline.md
     - MetaMask Guides: smart-chain/guides/metamask.md
   - Developers:
     - Binance Chain Fullnode:

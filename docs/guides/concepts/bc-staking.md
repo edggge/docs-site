@@ -17,6 +17,10 @@ However, as BSC wants to remain compatible with Ethereum as much as possible. On
 3. The BSC validator set is determined by its staking and delegation logic, via a staking module built on BC for BSC, and propagated every day UTC 00:00 from BC to BSC via Cross-Chain communication.
 4. The reward distribution happens on BC around every day UTC 00:00.
 
+## Ranking Algorithm
+
+Validators are ranked by their power and operator address. The more its delegation tokens, the higher ranking is. If two validators get the same amount of delegated tokens, validator with smaller address bytes has higher ranking.
+
 
 ## Commands
 

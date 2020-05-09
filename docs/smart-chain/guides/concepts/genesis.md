@@ -1,0 +1,89 @@
+# Genesis File
+
+
+This document explains how the genesis file of the Binance Smart Chain is structured.
+
+
+## What is a Genesis File
+
+A genesis file is a JSON file which defines the initial state of your blockchain. It can be seen as height `0` of your blockchain. The first block, at height `1`, will reference the genesis file as its parent.
+
+The state defined in the genesis file contains all the necessary information, like initial token allocation, genesis time, default parameters, and more. Let us break down these information.
+
+
+## Explaination
+
+* **chainId**
+
+**714** for main-net and **1417** for test-net.  To compatible with third part service that already supports Ethereum, we’d better not use network id that Ethereum ecology that already used.  The network id of test-net should be distinct from main-net.
+
+
+* **period**
+
+Minimum difference between two consecutive block’s timestamps. Suggested 3s for the testnet .
+
+* **epoch**
+
+Number of blocks after which to checkpoint and reset the pending votes. Suggested 100 for testnet
+
+* **nonce**
+
+The nonce is the cryptographically secure mining proof-of-work that proves beyond reasonable doubt that a particular amount of computation has been expended in the determination of this token value.
+
+In Binance Smart Chain, this value is always set to 0x0.
+
+
+* **timestamp**
+
+Must be at least the parent timestamp + BLOCK_PERIOD.
+
+* **extraData**
+
+	* EXTRA_VANITY: Fixed number of extra-data prefix bytes reserved for signer vanity. Suggested 32 bytes
+	* Signer Info: validator address
+	* EXTRA_SEAL bytes (fixed) is the signer’s signature sealing the header.
+
+* **gasLimit**
+
+A scalar value equal to the current chain-wide limit of Gas expenditure per block. High in our case to avoid being limited by this threshold during tests. Note: this does not indicate that we should not pay attention to the Gas consumption of our Contracts.
+
+GasCeil is 40000000 for testnet
+
+* **difficulty**
+
+A scalar value corresponding to the difficulty level applied during the nonce discovering of this block.
+Suggested 0x1 for testnet
+
+* **mixHash**
+
+Reserved for fork protection logic, similar to the extra-data during the DAO.
+Must be filled with zeroes during normal operation.
+
+* **coinbase**
+
+System controled address for collecting block rewards
+
+* **alloc**
+
+Allows to define a list of pre-filled wallets.
+
+| Contract Name         | Address                                   |
+| ----------------------|-------------------------------------------|
+| BSCValidatorSet       |0x0000000000000000000000000000000000001000 |
+| SlashIndicator        |0x0000000000000000000000000000000000001001 |
+| SystemReward          |0x0000000000000000000000000000000000001002 |
+| TendermintLightClient |0x0000000000000000000000000000000000001003 |
+| TokenHub              |0x0000000000000000000000000000000000001004 |
+| RelayerIncentivize    |0x0000000000000000000000000000000000001005 |
+| RelayerHub            |0x0000000000000000000000000000000000001006 |
+
+
+* **number**
+
+Block height in the chain, where the height of the genesis is block 0.
+
+* **parentHash**
+
+The Keccak 256-bit hash of the entire parent block’s header (including its nonce and mixhash). Pointer to the parent block, thus effectively building the chain of blocks. In the case of the Genesis block, and only in this case, it's 0.
+
+

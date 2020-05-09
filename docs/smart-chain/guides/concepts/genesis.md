@@ -69,13 +69,13 @@ Allows to define a list of pre-filled wallets.
 
 | Contract Name         | Address                                   |
 | ----------------------|-------------------------------------------|
-| BSCValidatorSet       |0x0000000000000000000000000000000000001000 |
-| SlashIndicator        |0x0000000000000000000000000000000000001001 |
-| SystemReward          |0x0000000000000000000000000000000000001002 |
-| TendermintLightClient |0x0000000000000000000000000000000000001003 |
-| TokenHub              |0x0000000000000000000000000000000000001004 |
-| RelayerIncentivize    |0x0000000000000000000000000000000000001005 |
-| RelayerHub            |0x0000000000000000000000000000000000001006 |
+| BSCValidatorSet       |[0x0000000000000000000000000000000000001000](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001000/contracts) |
+| SlashIndicator        |[0x0000000000000000000000000000000000001001](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001001/contracts) |
+| SystemReward          |[0x0000000000000000000000000000000000001002](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001002/contracts) |
+| TendermintLightClient |[0x0000000000000000000000000000000000001003](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001003/contracts) |
+| TokenHub              |[0x0000000000000000000000000000000000001004](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001004/contracts) |
+| RelayerIncentivize    |[0x0000000000000000000000000000000000001005](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001005/contracts) |
+| RelayerHub            |[0x0000000000000000000000000000000000001006](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001006/contracts) |
 
 
 * **number**

@@ -67,15 +67,15 @@ System controled address for collecting block rewards
 
 Allows to define a list of pre-filled wallets.
 
-| Contract Name         | Address                                   |
-| ----------------------|-------------------------------------------|
-| BSCValidatorSet       |[0x0000000000000000000000000000000000001000](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001000/contracts) |
-| SlashIndicator        |[0x0000000000000000000000000000000000001001](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001001/contracts) |
-| SystemReward          |[0x0000000000000000000000000000000000001002](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001002/contracts) |
-| TendermintLightClient |[0x0000000000000000000000000000000000001003](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001003/contracts) |
-| TokenHub              |[0x0000000000000000000000000000000000001004](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001004/contracts) |
-| RelayerIncentivize    |[0x0000000000000000000000000000000000001005](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001005/contracts) |
-| RelayerHub            |[0x0000000000000000000000000000000000001006](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001006/contracts) |
+| Contract Name         | Address                                   |ABI file name                                      |
+| ----------------------|-------------------------------------------|--------------------------------------------------- |
+| BSCValidatorSet       |[0x0000000000000000000000000000000000001000](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001000/contracts) |[bscvalidatorset](../../system-smart-contract/bscvalidatorset.md)|
+| SlashIndicator        |[0x0000000000000000000000000000000000001001](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001001/contracts) |[slashindicator](../../system-smart-contract/slashindicator.md)|
+| SystemReward          |[0x0000000000000000000000000000000000001002](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001002/contracts) | [systemreward](../../system-smart-contract/systemreward.md)|
+| TendermintLightClient |[0x0000000000000000000000000000000000001003](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001003/contracts) |[tendermintlightclient](../../system-smart-contract/tendermintlightclient.md) |
+| TokenHub              |[0x0000000000000000000000000000000000001004](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001004/contracts) |[tokenhub](../../system-smart-contract/tokenhub.md)|
+| RelayerIncentivize    |[0x0000000000000000000000000000000000001005](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001005/contracts) |[relayerincentivize](../../system-smart-contract/relayerincentivize.md)|
+| RelayerHub            |[0x0000000000000000000000000000000000001006](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001006/contracts) |[relayerhub](../../system-smart-contract/relayerhub.md) |
 
 
 * **number**

@@ -2,7 +2,7 @@
 
 ## PoSA Consensus of Binance Smart Chain
 
-[Binance Smart Chain](https://community.binance.org/topic/2686) is an innovative solution to bring programmability and interoperability to [Binance Chain](binance.org). Binance Smart Chain relies on a system of 21 validators with Proof of [Staked Authority (PoSA) consensus](../../smart-chain/guides/concepts/consensus.md) that can support short block time and lower fees. The most bonded validator candidates of staking will become validators and produce blocks. The double-sign detection and other slashing logic guarantee security, stability, and chain finality.
+[Binance Smart Chain](https://community.binance.org/topic/2686) is an innovative solution to bring programmability and interoperability to [Binance Chain](https://www.binance.org). Binance Smart Chain relies on a system of 21 validators with Proof of [Staked Authority (PoSA) consensus](../../smart-chain/guides/concepts/consensus.md) that can support short block time and lower fees. The most bonded validator candidates of staking will become validators and produce blocks. The double-sign detection and other slashing logic guarantee security, stability, and chain finality.
 
 ## Staking on Binance Chain
 

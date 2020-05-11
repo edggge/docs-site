@@ -2,36 +2,34 @@
 
 ## Abstract
 We target to design the consensus engine of BSC(Binance Smart Chain) to achieve the following goals:
+
 1. With quite a few blocks to confirm(should be less than Ethereum), better no fork in most cases.
 2. Blocking time should be faster than Ethereum, i.e. 5 seconds or less.
 3. No inflation, the block reward is transactiongas fees.
 4. As much as compatible as Ethereum.
 5. With governance as powerful as cosmos.
 
-Geth implements two kinds of consensus engine: ethash(based on PoW) and clique(base on PoA). Ethash is obviously not a good option for BSC because of lacking hash power on BSC. Clique has smaller blocking time and is invulnerable to 51% attack while doing as little to the core data structure as possible to preserve existing Ethereum client compatibility,  it seems to be a good choice except for its lack of powerful staking and governance capability on-chainon chain.  On the other hand, the Binance chain is built on Cosmos which does have a perfect staking and governance mechanism. Naturally, we try to propose a consensus engine that:
+[Geth](https://github.com/ethereum/go-ethereum/wiki/geth) implements two kinds of consensus engine: ethash(based on PoW) and [clique](https://ethereum-magicians.org/t/eip-225-clique-proof-of-authority-consensus-protocol/1853)(base on PoA). Ethash is obviously not a good option for BSC because of lacking hash power on BSC. Clique has smaller blocking time and is invulnerable to 51% attack while doing as little to the core data structure as possible to preserve existing Ethereum client compatibility,  it seems to be a good choice except for its lack of powerful staking and governance capability on-chainon chain.  On the other hand, the Binance chain is built on Cosmos which does have a perfect staking and governance mechanism. Naturally, we try to propose a consensus engine that:
 Binance chain does the staking and governance parts for BSC.
 ValidatorSet change of BSC is updated through interchain communication.
 Consensus engine of BSC keeps as simple as clique.
 
-Speaking of popular implementations of PoA consensus, it turns out that Bor follows athe similar design as ours. However, Bor still hashave some deficiencies, the critical one is that its security and reliability depends on running a trustful and stable Heimdall node.  We will try to borrow a few parts from Bor and   propose a new consensus engine to achieve all these goals.
-
-
-
+Speaking of popular implementations of PoA consensus, it turns out that Bor follows athe similar design as PoSA. However, Bor still have some deficiencies, the critical one is that its security and reliability depends on running a trustful and stable Heimdall node.  We will try to borrow a few parts from Bor and   propose a new consensus engine to achieve all these goals.
 
 
 ## Consensus Protocol
 
-The framework of consensus engine is quite similar to clique . This doc will focus more on the difference and ignore the common details. The key features are:
+The framework of consensus engine is quite similar to [clique](https://ethereum-magicians.org/t/eip-225-clique-proof-of-authority-consensus-protocol/1853). This doc will focus more on the difference and ignore the common details. The key features are:
 
-1. Validators set changes at the (epoch+N/2) blocks. (N is the size of validatorset before epoch block). Considering the security of light client, we delay N/2 block to let validatorSet change take place. 
+1. Validators set changes at the (epoch+N/2) blocks. (N is the size of validatorset before epoch block). Considering the security of light client, we delay N/2 block to let validatorSet change take place.
    The key interfaces of an engine are: `VerifyHeader`, `VerifySeal`, `FinalizeAndAssemble`, `Prepare` and `Seal`.
 
 ### How to Produce a new block
 
 #### Step 1: Prepare
-A validator node prepares the block header of next block. 
-* Load snapshot from cache or database, 
-		* If (height % epoch)==0, should fetch ValidatorSet from BSCValidatorSet contract.
+A validator node prepares the block header of next block.
+* Load snapshot from cache or database,
+		* If (height % epoch)==0, should fetch ValidatorSet from `BSCValidatorSet` [contract](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001000/transactions).
 *  Every epoch block, will store validators set message in `extraData` field of block header to facilitate the implement of light client.
 * The coinbase is the address of the validator
 

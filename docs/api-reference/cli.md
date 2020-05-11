@@ -200,6 +200,8 @@ For detailed usage, you can refer to:
 - [timelock](../timelock.md)
 - [memo validation](../memo-validation.md)
 - [staking](../guides/concepts/bc-staking.md)
+- [slashing](../guides/concepts/bc-slashing.md)
+
 
 ## Use CLI for Different Blockchains
 

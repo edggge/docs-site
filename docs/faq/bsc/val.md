@@ -36,6 +36,10 @@ Directly facing internet (public IP, no NAT)
 32GB of RAM
 SSD storage"
 
+## How many BNB are required to create a validator?
+
+The minimum self-delegated amount is **20000BNB**.
+
 ## When are rewards paid out?
 
 The rewards will not be sent to validator right away, instead, they will be distributed and accumulated on a contract. The reward distribution happens on BC around every day UTC 00:00.

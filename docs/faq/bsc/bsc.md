@@ -37,6 +37,10 @@ The introduction of BRP8 will be an innovative way for tokenization of propertie
 
 Key Innovations:
 
+* Proof-of-staked-authority Consensus
+
+* Native Cross-Chain Communication
+
 ## Binance Smart Chain is EVM-compatible. What does that mean?
 
 EVM means Ethereum Virtual Machine. Any smart-contract written to run in EVM can be easily ported to Binance Smart Chain.

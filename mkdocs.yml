@@ -94,7 +94,7 @@ nav:
       - Swift: https://github.com/binance-chain/swift-sdk/blob/master/README.md
       - C++: https://github.com/binance-chain/cplusplus-sdk/wiki
       - C#: https://github.com/binance-chain/csharp-sdk
-    - API Reference:
+    - Binance Chain API Reference:
       - Accelerated Node HTTP API - Paths and Models: api-reference/dex-api/paths.md
       - Accelerated Node HTTP API Swagger: api-swagger/index.html
       - WebSockets - Connecting: api-reference/dex-api/ws-connection.md
@@ -102,6 +102,8 @@ nav:
       - Node RPC - Paths and Models: api-reference/node-rpc.md
       - Node RPC Swagger: rpc-swagger/index.html
       - CHANGELOG: changelog.md
+    - Binance Smart Chain:
+      - BEP2E Tokens: smart-chain/developer/BEP2E.md
   - Wallets:
     - Binance Chain Walletsupport: wallets/wallets.md
     - Wallet Tutorial:

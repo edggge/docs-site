@@ -111,7 +111,7 @@ The balance will be bumped by e18 for BNB.
     });
 ```
 
-## Deploy BEP2E contract
+## Call BEP2E contract
 
 ```
 

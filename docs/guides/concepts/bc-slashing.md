@@ -9,16 +9,52 @@ So far there are two slashable cases.
 
 Anyone can submit a slash request on BC with the evidence of Double Sign of BSC
 
+#### Evidence Validation
+* Two block headers have same height and same parent block hash
+* Two block headers are sealed by the same validator
+* Two signatures of these two blocks must not be the same
+* The time of these two blocks must be within the validity of the evidence, which is 24 hours
+
+If the evidence is valid:
+
+1. 1000BNB would be slashed from the self-delegator of the validator
+2. If the self-delegator’s stake amount on the validator is less than 1000BNB, then the unbonding delegation balance would be slashed if it exists until totally 1000BNB slashed from self-delegator of the validator. However, if all the slashed BNB is less than 1000, all the remaining stake of the self-delegator will be slashed
+3. 100 of slashed BNB would allocate to the submitter as a reward
+4. The rest of slashed BNB will allocate to the custody addresses of which validators would take part in the next distribution. If no matched validators found, then the rest of slashed BNB will allocate to validators on BC as block fee
+5. Set the validator ‘jailed’ with duration of 7 days, and remove it from validator set by an instance BSC validator set update Cross-Chain update
+
+
 ### Inavailability
 
 There can be an internal smart contract responsible for recording the missed blocking metrics of each validator. 
+
+If a validator missed more than 50 blocks, the blocking reward for validator will not be relayed to BC for distribution but shared with other better validators. If it missed more than 150 blocks, then this will be propagated back to BC where another Slashing will happen:
+
+1. 1000BNB would be slashed from the self-delegator of the validator
+2. If the self-delegator’s stake amount on the validator is less than 1000BNB, then the unbonding delegation balance would be slashed if it exists until totally 1000BNB slashed from self-delegator of the validator. However, if all the slashed BNB is less than 1000, all the remaining stake of the self-delegator will be slashed
+3. 100 of slashed BNB would allocate to the validators on BC as block fee
+4. The rest of slashed BNB will allocate to the custody addresses of which validators would take part in the next distribution. If no matched validators found, then the rest of slashed BNB will allocate to validators on BC as block fee
+5. Set the validator ‘jailed’ with duration of 2 days, and remove it from validator set by an instance BSC validator set update Cross-Chain update
+
+## UnJail
+The malicious validators who are slashed by the previous cases will be set to `jailed` along with a duration setting as well due to the malicious or negative behaviors. We can set it to ‘unjailed’ by sending a side-unjail transaction if the validation passed.
+
+### Basic Validation
+validator address must not be empty
+side chain id length: 1-20 
+
+### State Validation
+* side chain id exists
+* self-delegation of the validator exists and the tokens of it must be greater than the min-self-delegation setting by 20000BNB
+* the validator is in ‘jailed’ now
+* already passed the duration set when ‘jailed’ happened
+
 
 ## Commands
 
 ### Submit BSC evidence
 
 Slashing validators of BSC for the malicious behavior of **double-sign** by submitting evidence consisting of two block headers with same height but signed by one signer
-
 
 #### Parameters for  slashing bsc-submit-evidence 
 
@@ -28,8 +64,6 @@ Slashing validators of BSC for the malicious behavior of **double-sign** by subm
 | --from             | bnb19awsmku5ch689lp0rj0c6su7x0n5wxhjm65hdd                   | Name or address of  private key with which to sign           | Yes          |
 | --evidence         | [{"difficulty":"0x2","extraData":"0xd98301...},{"difficulty":"0x3","extraData":"0xd64372...}] | Evidence details,  including two bsc block headers with json format | Option       |
 | --evidence-file    | /user/evidence.json                                          | File of evidence details,  if evidence-file is not empty, --evidence will be ignored | Option       |
-
- 
 
 #### Examples
 * Mainnet

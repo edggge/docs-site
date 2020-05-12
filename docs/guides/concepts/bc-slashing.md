@@ -17,7 +17,7 @@ There can be an internal smart contract responsible for recording the missed blo
 
 ### Submit BSC evidence
 
-Slashing validators of BSC for the malicious behavior of double-sign by submitting evidence consisting of two block headers with same height but signed by one signer
+Slashing validators of BSC for the malicious behavior of **double-sign** by submitting evidence consisting of two block headers with same height but signed by one signer
 
 
 #### Parameters for  slashing bsc-submit-evidence 

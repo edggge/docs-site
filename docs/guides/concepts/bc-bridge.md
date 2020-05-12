@@ -2,7 +2,7 @@
 
 ## What is token bridge
 
-BC <-> BSCbridge for self transfers of BEP2 tokens to BEP2E (ERC20 representation). The bridge connects two chains (BC and BSC). When a user deposits BEP2 into the bridge contract contract on BC they get the same amount of BEP2E tokens on BSC, and they can convert them back as well.
+BC <-> BSC bridge for self transfers of BEP2 tokens to BEP2E (ERC20 representation). The bridge connects two chains (BC and BSC). When a user deposits BEP2 into the bridge contract contract on BC they get the same amount of BEP2E tokens on BSC, and they can convert them back as well.
 
 ## Commands
 

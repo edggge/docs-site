@@ -18,15 +18,15 @@ Please follow the guide [here]()
 
 ## How can I stake my BNB?
 
-
+Please follow the guide [here]()
 
 ## How many tokens are required to stake BNB?
 
-minimum amount is
+The minimum delegated amount is **1BNB**.
 
 ## Which wallets can be used to stake BNB?
 
-
+You can only use command line tool:
 
 ## Where can I find out more about staking economics and rewards?
 

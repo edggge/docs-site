@@ -12,6 +12,8 @@ The execution of a Smart Contract may slow down the exchange function and add no
 
 Binance Smart Chain relies on a system of 21 validators with Proof of Staked Authority (PoSA) consensus that can support short block time and lower fees.
 
+There will be fewer validators on Binance Smart Chain testnet.
+
 ## Can you tell more about Proof of Staked Authority(PoSA)? What is it?
 
 PoSA is a combination of PoA and PoS. Blocks are produced by a limited set of validators, they are elected in and out based on a staking based governance. Validators take turns to produce blocks in a PoA manner

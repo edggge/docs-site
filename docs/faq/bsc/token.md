@@ -6,7 +6,7 @@ BNB is the token used to prevent `nothing-at-stake` problem.
 
 ## What are tokens on Binance Smart Chain?
 
-BNB is the native token for BSC, and pegged BEP2 tokens on BSC is called BSC.
+BNB is the native token for BSC, and pegged BEP2 tokens on BSC is called BEP2E.
 
 ## How to issue BEP2 tokens?
 
@@ -36,8 +36,8 @@ You can read details in White Paper: <https://github.com/binance-chain/whitepape
 
 Validators and delegators will earn rewards from the following sources:
 
-* Cross-chain transfers
 * Calling smart contracts on BSC is metered by gas.
+* Rewards for running a BSC Relayer if validators have one
 
 ## Which wallets can I use to store BNB?
 

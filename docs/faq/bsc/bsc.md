@@ -28,10 +28,11 @@ Fast block time, cheaper cost
 
 Binance Chain opens the gate for users to take advantage of the fast transferring and trading
 
-## There are already many wallets/tools support Binance chain
+## How many assets are issued on Binance chain?
 
-There are already 110 assets on Binance Chain
-The introduction of BRP8 will be an innovative way for tokenization of properties
+There are already [110 assets](https://explorer.binance.org/assets) on Binance Chain
+
+The introduction of [BEP8](https://github.com/binance-chain/BEPs/pull/69) will be an innovative way for tokenization of properties
 
 ## What make Binance Smart Chain different?
 
@@ -40,6 +41,8 @@ Key Innovations:
 * Proof-of-staked-authority Consensus
 
 * Native Cross-Chain Communication
+
+* Expand the use cases of BNB token
 
 ## Binance Smart Chain is EVM-compatible. What does that mean?
 

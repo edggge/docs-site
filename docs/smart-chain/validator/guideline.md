@@ -20,17 +20,17 @@ Validators and delegators will earn rewards from transaction fees: dApp usages
 **Hardware Requirements**
 * running BSC software in VPS Servers (both with firewall):
 	* **DigitalOcean**: CPU optimized droplet 32GB/16CPU: https://www.digitalocean.com/docs/droplets/resources/choose-plan/
-	* **Amazon EC2**: C5 instance https://aws.amazon.com/ec2/instance-types/c5/ 
+	* **Amazon EC2**: C5 instance https://aws.amazon.com/ec2/instance-types/c5/
 	* **Google Cloud Engine**: General-purpose (N1) https://cloud.google.com/compute/docs/machine-types
-*  Memory: 32 GB of RAM
+*  Memory: 16 GB of RAM
 *  Disk space: 500 GB of SSD storage (no normal hard disk or network hard disk)
 *  CPU: 64-bitNetwork: 1GB fiber
 *  HSM(recomended)
-*If you are running a node in Testnet, 8CPU/16GB of RAM is sufficient*
+*If you are running a node in Testnet, 4CPU/8GB of RAM is sufficient*
 
 ## What is a VPS?
 
-VPS stands for Virtual Private Server. A VPS runs its own copy of an operating system (OS), and customers may have [superuser](https://en.wikipedia.org/wiki/Superuser)-level access to that operating system instance, so they can install almost any software that runs on that OS. 
+VPS stands for Virtual Private Server. A VPS runs its own copy of an operating system (OS), and customers may have [superuser](https://en.wikipedia.org/wiki/Superuser)-level access to that operating system instance, so they can install almost any software that runs on that OS.
 
 ## Why is a VPS highly recommended for validators?
 
@@ -38,20 +38,20 @@ A VPS is recommended (and often required) for validator node setups, as you will
 
 ## How to Start a Validator Node
 1. Configure your VPSnetwork ports, ssl, firewall
-2. Install BSC node: 
+2. Install BSC node:
 * git checkout the correct branch
 * compile
 3. create your wallets
 4. Download history snapshot(optional)
 5. Start your fullnode
 6. Check sync status
-7. Stake on BC 
+7. Stake on BC
 
 ## Best Practice
 
 ### Store your BNB with a hardware wallet
 
-The most valuable assets of a validator are two keys: one for signing transactions and another for signing blocks. 
+The most valuable assets of a validator are two keys: one for signing transactions and another for signing blocks.
 * Account Private keys：
 To protect your BNB, do not share your 24 words with anyone. The only person who should ever need to know them is you. In short, HSMs are affordable, performant and portable pieces of hardware that help to securely generate, store and manage your private keys. Malware attacks and remote extraction of private keys are much more difficult when an HSM is configured properly.
 

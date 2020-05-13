@@ -9,12 +9,13 @@ We target to design the consensus engine of BSC(Binance Smart Chain) to achieve 
 4. As much as compatible as Ethereum.
 5. With governance as powerful as cosmos.
 
-[Geth](https://github.com/ethereum/go-ethereum/wiki/geth) implements two kinds of consensus engine: ethash(based on PoW) and [clique](https://ethereum-magicians.org/t/eip-225-clique-proof-of-authority-consensus-protocol/1853)(base on PoA). Ethash is obviously not a good option for BSC because of lacking hash power on BSC. Clique has smaller blocking time and is invulnerable to 51% attack while doing as little to the core data structure as possible to preserve existing Ethereum client compatibility,  it seems to be a good choice except for its lack of powerful staking and governance capability on-chainon chain.  On the other hand, the Binance chain is built on Cosmos which does have a perfect staking and governance mechanism. Naturally, we try to propose a consensus engine that:
-Binance chain does the staking and governance parts for BSC.
-ValidatorSet change of BSC is updated through interchain communication.
-Consensus engine of BSC keeps as simple as clique.
+[Geth](https://github.com/ethereum/go-ethereum/wiki/geth) implements two kinds of consensus engine: ethash(based on PoW) and [clique](https://ethereum-magicians.org/t/eip-225-clique-proof-of-authority-consensus-protocol/1853)(base on PoA). Ethash is obviously not a good option for BSC because of lacking hash power on BSC. Clique has smaller blocking time and is invulnerable to 51% attack while doing as little to the core data structure as possible to preserve existing Ethereum client compatibility,  it seems to be a good choice except for its lack of powerful staking and governance capability on-chainon.  On the other hand, the Binance chain is built on cosmos-SDK which does have a perfect staking and governance mechanism. Naturally, we try to propose a consensus engine that:
 
-Speaking of popular implementations of PoA consensus, it turns out that Bor follows athe similar design as PoSA. However, Bor still have some deficiencies, the critical one is that its security and reliability depends on running a trustful and stable Heimdall node.  We will try to borrow a few parts from Bor and   propose a new consensus engine to achieve all these goals.
+* Binance chain does the staking and governance parts for BSC.
+* ValidatorSet change of BSC is updated through interchain communication.
+* Consensus engine of BSC keeps as simple as clique.
+
+There are already some popular implementations of PoA consensus, like [Bor](https://blog.matic.network/heimdall-and-bor-matic-validator-and-block-production-layers/).
 
 
 ## Consensus Protocol
@@ -51,8 +52,6 @@ Verify the block header when receiving a new block.
 * Verify the signature of the coinbase is in `extraData` of the `blockheader`
 * Compare the block time of the `blockHeader` and the expected block time that the signer suppose to use, will deny a `blockerHeader` that is smaller than expected. It helps to prevent a selfish validator from rushing to seal a block.
 * The `coinbase` should be the signer and the difficulty should be expected value.
-
-Besides the above change, the logic of distributing gas fee also need change in miner layer, refer to Reward Distribution section.
 
 #### Step2: Finalize
 

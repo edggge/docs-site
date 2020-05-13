@@ -8,11 +8,11 @@ As a BSC relayer, it must have proper configurations on the following three item
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-|    srcIBCChainID  |   uint16   |      IBCChainID of BC, the value is 1 for testnet       |
+|srcIBCChainID  |   uint16   |      IBCChainID of BC, the value is 1 for testnet       |
 |destIBCChainID|uint16|IBCChainID of BSC, the value is 2 for testnet|
-|destChainName|string|name of BSC, the value is “bsc”|
+|destChainName|string|name of targe chain, for Binance Smart Chain, the value should be “bsc”|
 
-BSC relayer should try get all block result and pick out the event whose event type is “IBCPackage” from endBlock event table. Mark the block height as **H**. If there is no ibc event, then just skip this block. This is an example of ibc event.
+A BSC relayer is required to parse all block results and pick out all events with event type “IBCPackage” from endBlock event table. This is an ibc event example:
 
 ```json
 { "type": "IBCPackage",
@@ -40,6 +40,7 @@ BSC relayer should iterate all the attributes and parse the attribute value:
 ## Query BC Header and IBC Store
 ### Query BC Header at Height
 ```golang
+import tmtypes "github.com/tendermint/tendermint/types"
 type Header struct {
   tmtypes.SignedHeader
   ValidatorSet     *tmtypes.ValidatorSet `json:"validator_set"`
@@ -47,26 +48,40 @@ type Header struct {
 }
 ```
 
-Call the following rpc methods to build the above Header object:
+If an IBCPackage event is found at height **H**, wait for block **H+1** is produced and call the following rpc methods to build the above **Header** object:
 
 |Name|Method|
 | ---- | ---- |
-|tmtypes.SignedHeader|{rpc}/commit?height=**H**|
-|ValidatorSet|{rpc}/validators?height=**H**|
-|NextValidatorSet|{rpc}/validators?height=**H+1**|
+|tmtypes.SignedHeader|{rpc}/commit?height=**H+1**|
+|ValidatorSet|{rpc}/validators?height=**H+1**|
+|NextValidatorSet|{rpc}/validators?height=**H+2**|
 
 Encode the Header object to a byte array:
 
-1. Import cdc from tendermint crypto:https://github.com/tendermint/tendermint/blob/master/crypto/encoding/amino/amino.go
-2. Call MarshalBinaryLengthPrefixed to encode header struct:
+1. Add dependency on [go-amino v0.14.1](https://github.com/tendermint/go-amino/tree/v0.14.1)
+2. Add dependency on [tendermint v0.32.3](https://github.com/tendermint/tendermint/tree/v0.32.3):
+3. Example golang code to encode header struct:
 ```golang
+
+import (
+  amino "github.com/tendermint/go-amino"
+  tmtypes "github.com/tendermint/tendermint/types"
+)
+
+var cdc = amino.NewCodec()
+
+func init() {
+  tmtypes.RegisterBlockAmino(cdc)
+}
+
 func (h *Header) EncodeHeader() ([]byte, error) {
-		bz, err := cdc.MarshalBinaryLengthPrefixed(h)
-		if err != nil {
-			return nil, err
-			}
-		return bz, nil
-	}
+  bz, err := cdc.MarshalBinaryLengthPrefixed(h)
+  if err != nil {
+     return nil, err
+  }
+  return bz, nil
+}
+
 ```
 
 ### Query Package With Proof
@@ -111,3 +126,5 @@ All above methods shares the same parameter table:
 |packageSequence|uint64|sequence from attribution value|
 
 ## Incentives Mechanism
+
+[BSC Relayer Incentive Mechanism](incentives.md)

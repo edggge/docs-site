@@ -18,7 +18,7 @@ slash amount, cross-chain transfer fees
 2. Install software:
 3. Create a wallet and get some BNB
 4. Run your fullnode and keep it synced
-5. Stake your BNB on BC, the top 21 most staked nodes to be the validator set"
+5. Stake your BNB on BC, the top 21 most staked nodes to be the validator set
 
 ## How to join mainnet as a validator?
 
@@ -32,9 +32,9 @@ slash amount, cross-chain transfer fees
 
 Processing transactions is mostly CPU bound. Therefore we recommend running CPU optimized servers.
 Directly facing internet (public IP, no NAT)
-16 cores CPU
-32GB of RAM
-SSD storage"
+8 cores CPU
+16GB of RAM
+500 SSD storage"
 
 ## How many BNB are required to create a validator?
 

@@ -24,7 +24,7 @@ BC <-> BSC bridge for self transfers of BEP2 tokens to BEP2E (ERC20 representati
 
 * Mainnet
 ```bash
-bnbcli bridge bind --symbol DEF-0F9 --amount     6000000000000000 --expire-time 1594715271 --contract-decimals 18 --from     alice --chain-id Binance-Chain-Nile --contract-address     0x6aade9709155a8386c63c1d2e5939525b960b4e7 --home ~/home_cli
+bnbcli bridge bind --symbol DEF-0F9 --amount 6000000000000000 --expire-time 1594715271 --contract-decimals 18 --from alice --chain-id Binance-Chain-Nile --contract-address 0x6aade9709155a8386c63c1d2e5939525b960b4e7 --home ~/home_cli
 ```
 
 ###  Update bind
@@ -43,7 +43,7 @@ bnbcli bridge bind --symbol DEF-0F9 --amount     6000000000000000 --expire-time 
 #### For example**
 * Mainnet
 ```bash
-bnbcli     bridge update-bind --symbol DEF-0F9 --from alice --chain-id     Binance-Chain-Nile --status success --contract-address      0x6aade9709155a8386c63c1d2e5939525b960b4e7 --channel-sequence     1 --home ~/home_cli
+bnbcli bridge update-bind --symbol DEF-0F9 --from alice --chain-id Binance-Chain-Nile --status success --contract-address 0x6aade9709155a8386c63c1d2e5939525b960b4e7 --channel-sequence 1 --home ~/home_cli
 ```
 
 ### Transfer out
@@ -62,7 +62,7 @@ bnbcli     bridge update-bind --symbol DEF-0F9 --from alice --chain-id     Binan
 
 * Mainnet
 ```bash
-bnbcli bridge transfer-out --to     0xf9f609f9f4309f191654aa1fd691a6be6aefa7ac --expire-time 1594715271     --chain-id Binance-Chain-Nile --from alice --amount 100000000:DEF-0F9     --home ~/home_cli
+bnbcli bridge transfer-out --to 0xf9f609f9f4309f191654aa1fd691a6be6aefa7ac --expire-time 1594715271 --chain-id Binance-Chain-Nile --from alice --amount 100000000:DEF-0F9 --home ~/home_cli
 ```
 
 ### Update transfer out
@@ -81,7 +81,7 @@ bnbcli bridge transfer-out --to     0xf9f609f9f4309f191654aa1fd691a6be6aefa7ac -
 #### For example
 * Mainnet
 ```bash
-bnbcli     bridge transfer-out --to 0xf9f609f9f4309f191654aa1fd691a6be6aefa7ac     --expire-time 1594715271 --chain-id Binance-Chain-Nile --from alice     --amount 100000000:DEF-0F9 --home ~/home_cli
+bnbcli bridge transfer-out --to 0xf9f609f9f4309f191654aa1fd691a6be6aefa7ac --expire-time 1594715271 --chain-id Binance-Chain-Nile --from alice --amount 100000000:DEF-0F9 --home ~/home_cli
 ```
 
 ### Transfer in
@@ -105,9 +105,9 @@ bnbcli     bridge transfer-out --to 0xf9f609f9f4309f191654aa1fd691a6be6aefa7ac  
 
 * Mainnet
 ```bash
-bnbcli     bridge transfer-in --channel-sequence 1 --contract-address      0x6aade9709155a8386c63c1d2e5939525b960b4e7 --refund-address     0xf9f609f9f4309f191654aa1fd691a6be6aefa7ac,0x052c89fa5c2f01082a63e91a29130edceca10806     --recipient-address  bnb1tfh30c67mkzfz06as2hk0756mgdx8mgypu7ajl,bnb13ls59kuvaaxq7a05rpps6z5r72nqcla3tuc4nc     --amount 1000,10000 --symbol BNB --relay-fee 1000:BNB --expire-time     1594715271 --chain-id Binance-Chain-Nile --from alice --home ~/home_cli
+bnbcli bridge transfer-in --channel-sequence 1 --contract-address 0x6aade9709155a8386c63c1d2e5939525b960b4e7 --refund-address 0xf9f609f9f4309f191654aa1fd691a6be6aefa7ac,0x052c89fa5c2f01082a63e91a29130edceca10806 --recipient-address bnb1tfh30c67mkzfz06as2hk0756mgdx8mgypu7ajl,bnb13ls59kuvaaxq7a05rpps6z5r72nqcla3tuc4nc --amount 1000,10000 --symbol BNB --relay-fee 1000:BNB --expire-time 1594715271 --chain-id Binance-Chain-Nile --from alice --home ~/home_cli
 ```
- 
+
 
 ### Skip sequence
 
@@ -125,6 +125,5 @@ bnbcli     bridge transfer-in --channel-sequence 1 --contract-address      0x6aa
 
 * Mainnet
 ```bash
-bnbcli     bridge skip-sequence --channel-sequence 1 --sequence-to-skip 1     --claim-type-to-skip 1 --chain-id Binance-Chain-Nile --from alice --home     ~/home_cli
+bnbcli bridge skip-sequence --channel-sequence 1 --sequence-to-skip 1 --claim-type-to-skip 1 --chain-id Binance-Chain-Nile --from alice --home ~/home_cli
 ```
- 

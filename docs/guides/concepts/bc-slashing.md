@@ -17,7 +17,7 @@ Anyone can submit a slash request on BC with the evidence of Double Sign of BSC
 
 If the evidence is valid:
 
-1. 1000BNB would be slashed from the self-delegator of the validator
+1. 1000BNB would be slashed from the **self-delegated** BNB of the validator
 2. If the self-delegator’s stake amount on the validator is less than 1000BNB, then the unbonding delegation balance would be slashed if it exists until totally 1000BNB slashed from self-delegator of the validator. However, if all the slashed BNB is less than 1000, all the remaining stake of the self-delegator will be slashed
 3. 100 of slashed BNB would allocate to the submitter as a reward
 4. The rest of slashed BNB will allocate to the custody addresses of which validators would take part in the next distribution. If no matched validators found, then the rest of slashed BNB will allocate to validators on BC as block fee
@@ -36,7 +36,7 @@ If a validator missed more than 50 blocks, the blocking reward for validator wil
 4. The rest of slashed BNB will allocate to the custody addresses of which validators would take part in the next distribution. If no matched validators found, then the rest of slashed BNB will allocate to validators on BC as block fee
 5. Set the validator ‘jailed’ with duration of 2 days, and remove it from validator set by an instance BSC validator set update Cross-Chain update
 
-## UnJail
+## Unjail
 The malicious validators who are slashed by the previous cases will be set to `jailed` along with a duration setting as well due to the malicious or negative behaviors. We can set it to ‘unjailed’ by sending a side-unjail transaction if the validation passed.
 
 ### Basic Validation

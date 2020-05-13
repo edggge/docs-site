@@ -12,7 +12,7 @@ The total cost of transfer from BSC to BC is composed of 2 parts:
 
 * Fee for Oracle-relayers 0.02BNB, pay for BSC relayers
 
-* Call TokenHub Contract: You need to pay BNB for calling smart-contract on BSC, this transaction is metered by gas fee, which is a global parameter. At the moment, you need to pay about ~ 0.001BNB.
+* Call TokenHub Contract: You need to pay BNB for calling smart-contract on BSC, this transaction is metered by gas, which is a global parameter. At the moment, you need to pay about ~ 0.001BNB.
 
 ## What's is an Oracle relayer?
 

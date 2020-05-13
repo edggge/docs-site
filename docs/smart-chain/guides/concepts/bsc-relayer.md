@@ -3,16 +3,16 @@ Relayers are responsible to submit Cross-Chain Communication Packages between th
 
 Relayers for BC-to-BSC communication referred to as **BSC Relayers** are a standalone process that can be run by anyone, and anywhere, except that Relayers must register themselves onto BSC and deposit a certain amount of BNB. Only relaying requests from the registered Relayers will be accepted by BSC.
 
-## Monitor and Parse IBC Event
+## Monitor and Parse Cross Chain Event
 As a BSC relayer, it must have proper configurations on the following three items:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-|srcIBCChainID  |   uint16   |      IBCChainID of BC, the value is 1 for testnet       |
-|destIBCChainID|uint16|IBCChainID of BSC, the value is 2 for testnet|
+|srcCrossChainID  |   uint16   |      CrossChainID of BC, the value is 1 for testnet       |
+|destCrossChainID|uint16|CrossChainID of BSC, the value is 2 for testnet|
 |destChainName|string|name of targe chain, for Binance Smart Chain, the value should be “bsc”|
 
-A BSC relayer is required to parse all block results and pick out all events with event type “IBCPackage” from endBlock event table. This is an ibc event example:
+A BSC relayer is required to parse all block results and pick out all events with event type “IBCPackage” from endBlock event table. This is an cross chain package event example:
 
 ```json
 { "type": "IBCPackage",
@@ -31,14 +31,15 @@ BSC relayer should iterate all the attributes and parse the attribute value:
 |IndexDesription|Type|Example Value|
 | ---- | ---- | ----------- |
 |0|destination chain name|string|bsc|
-|1|IBCChainId of destination chain |int16|2|
+|1|CrossChainID of destination chain |int16|2|
 |2|channel id|int8|8|
 |3|sequenceu|int64|19|
 
-3. Filter out all attributes with mismatched destIBCChainID and destChainName.
+3. Filter out all attributes with mismatched destCrossChainID and destChainName.
 
-## Query BC Header and IBC Store
-### Query BC Header at Height
+## Build Tendermint Header and Query Cross Chain Package
+
+### Build Tendermint Header
 ```golang
 import tmtypes "github.com/tendermint/tendermint/types"
 type Header struct {
@@ -48,7 +49,7 @@ type Header struct {
 }
 ```
 
-If an IBCPackage event is found at height **H**, wait for block **H+1** is produced and call the following rpc methods to build the above **Header** object:
+If a cross chain package event is found at height **H**, wait for block **H+1** and call the following rpc methods to build the above **Header** object:
 
 |Name|Method|
 | ---- | ---- |
@@ -60,7 +61,7 @@ Encode the Header object to a byte array:
 
 1. Add dependency on [go-amino v0.14.1](https://github.com/tendermint/go-amino/tree/v0.14.1)
 2. Add dependency on [tendermint v0.32.3](https://github.com/tendermint/tendermint/tree/v0.32.3):
-3. Example golang code to encode header struct:
+3. Example golang code to encode **Header**:
 ```golang
 
 import (
@@ -86,14 +87,15 @@ func (h *Header) EncodeHeader() ([]byte, error) {
 
 ### Query Package With Proof
 1. Specify the height as H
+2. Store name: ibc
 2. Query path: /store/ibc/key
-3. Follow the talble to build a 14-length byte array as query key:
+3. Follow the table to build a 14-length byte array as query key:
 
 |Name|Length|Value|
 | ---- | ---- | ------ |
 |prefix|1 bytes|0x00|
-|ibcChainID of souceChain|2 bytes|srcIBCChainID in configration|
-|ibcChainID of destChain|2 bytes|destIBCChainID in configration|
+|souce chain CrossChainID|2 bytes|srcCrossChainID in bsc relayer configuration|
+|destination chain CrossChainID|2 bytes|destCrossChainID in bsc relayer configuration|
 |channelID|1 bytes|channelID in attribute value|
 |sequence|8 bytes|sequence in attribute value|
 

@@ -10,11 +10,11 @@ The **oracle** module is a common module like gov which is used to handle prophe
 5. If there is no chance that the validators will reach a consensus, the prophecy will be marked failed and the prophecy will be deleted and the validators should start over again.
 
 ## Bridge Module
-Bridge module will process cross chain transactions. It contains two parts: transactions from bbc to bsc and transactions from bsc to bbc.
-For transactions from bsc to bbc, it will depend on the oracle module. When the validators reach a consensus on a certain claim, the bridge module will process the transaction according to the claim, like transfer from bsc to bbc.
-For transactions from bbc to bsc, it will process the bbc part of the transaction and write the related IBC package for bsc.
+Bridge module will process cross chain transactions. It contains two parts: transactions from bc to bsc and transactions from bsc to bc.
+For transactions from bsc to bc, it will depend on the oracle module. When the validators reach a consensus on a certain claim, the bridge module will process the transaction according to the claim, like transfer from bsc to bc.
+For transactions from bc to bsc, it will process the bc part of the transaction and write the related cross chain package for bsc.
 
-### BSC to BBC Claim Types
+### BSC to BC Claim Types
 Claim types:
 1. Bind response
 2. Transfer
@@ -25,5 +25,5 @@ Bridge module will register hooks processing the above claim types. When a claim
 
 ### Error handling
 
-If there is any unexpected error which will block the following cross chain transactions, the validators should raise a skip sequence claim, which will increase the sequence of the specified claim type, so that BBC can process the following transactions.
+If there is any unexpected error which will block the following cross chain transactions, the validators should raise a skip sequence claim, which will increase the sequence of the specified claim type, so that BC can process the following transactions.
 

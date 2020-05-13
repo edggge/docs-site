@@ -11,7 +11,6 @@
 |RelayerHub Contract|0x0000000000000000000000000000000000001006|
 
 ## On-Chain Light Client 
-[introduction about on-chain light client verification algorithm]
 
 The purpose of cross-chain interoperability is to enable one blockchain to function as a light-client of another. Since Binance Chain is using a classical Byzantine Fault Tolerant consensus algorithm, light-client verification is cheap and easy: all we have to do is check validator signatures on the latest block, and verify a Merkle proof of the state.
 
@@ -21,62 +20,82 @@ Unlike Proof-of-Work, the light-client protocol does not need to download and ch
 
 Ethereum platform supports stateless precompiled contract implemented with golang and normal contract implemented with solidity. Comparing with normal contract, precompiled contracts are more efficient and costs less gas, but they are stateless. However, on-chain light client must be stateful. So here we will try to a mixed approach: precompiled implemented contract(stateless calculation, such as signature verification) and normal contract (store validator set and trusted appHash).
 
-### Precompile Contract
 
 ![img](https://lh5.googleusercontent.com/NgjBCXKChSKMrFWWWF2DGWLu32h_SAivQZabZqaiD68JOuynFDG7U5FHPwj6VXlMCwYpX6tWBqRtIAhJmP6bt9Htes5bxJQTw6dHD5R6n_P2BCB04Yh-ZAnzJm-aD8fydBYr2V88)
 
-* Validate Tendermint Header
+### Precompile Contract
+
+#### Validate Tendermint Header
+
+This contract implements tendermint header verification algorithm. The input parameters contain the trusted consensus state and a new tendermint header. The validation algorithm will verify the new tendermint header against the trusted consensus state. If the new header is valid, a new consensus state will be created and returned to caller. Otherwise, an error will be returned.
+
+#### Validate Merkle Proof
+
+This contract implements a [Tendermint merkle proof verification algorithm](https://github.com/tendermint/tendermint/blob/master/docs/architecture/adr-026-general-merkle-proof.md).
+
+### Solidity Contract
+
+#### Tendermint Light Client Contract
+
+1. ConsensusState: The first consensus state will be written in the constructor. Once a new tendermint header is verified, a new consensus state will be created.
 ```golang
 type ConsensusState struct {
-    chainID              string
-    height               int64
-    appHash              []byte
-    curValidatorSetHash  []byte
-    nextValidatorSet     *tmtypes.ValidatorSet
-  }
-
+  chainID                       string
+  height                         int64
+  appHash                    []byte
+  curValidatorSetHash  []byte
+  nextValidatorSet        *tmtypes.ValidatorSet
+}
+```
+2. Tendermint Header: A relayer who want to sync new tendermint headers need to query BC to build this object. Then encode it to byte array and call syncTendermintHeader.
+```golang
 type Header struct {
     Header blockHeader
     Validator[] CurValidatorSet
     Validator[] NextValidatorSet
 }
 ```
-* function **syncTendermintHeader**
+This contract implements the following four methods:
 
-syncTendermintHeader implements tendermint header verification algorithm. If the Tendermint header is verified as valid again the current consensus state, then the height, appHash and nextValidatorSet in the Tendermint header will be written into the consensus state and the updated consensus state will be returned.
+1. function **syncTendermintHeader**(byte[] header, uint64 height)
+syncTendermintHeader gets nearest consensus state by height and call validateTendermintHeader in precompiled contract to verify the tendermint header. If the success, a new consensus state will be saved.
 
-### Validate Merkle Proof with function verifyMerkleProof
-
-**verifyMerkleProof ** implements a merkle proof verification algorithm which is the same as what we do in bnbcli untrusted query.
-
-### Solidity Contract
-
-#### Tendermint Light Client Contract
-
-* function **syncTendermintHeader**(byte[] header, uint64 height)
-syncTendermintHeader gets nearest consensus state by height and call validateTendermintHeader in precompiled contract to verify the tendermint header. If the success, an new consensus state will be saved.
-
-* function **getAppHash**(uint64 height)
+2. function **getAppHash**(uint64 height) returns(bytes32)
 getAppHash provides a method to get the verified appHash at the specified height. Besides, If the header the specified height have not be verified, then zero value will be returned.
 
+3. function **isHeaderSynced**(uint64 height) returns (bool)
+isHeaderSynced provides a lower cost method to judge if the specified height has been synced.
+
+4. function **getSubmitter**(uint64 height) returns (address)
+getSubmitter provides a method to get the submitter address of the specified header.
+
 #### Merkle Proof Verification Library
+This library provides an util to to verify merkle proof from BC. Any contract which need to verify merkle proof just need to import this Library.
 
-* function **verifyMerkleProof**(int64 height, byte[] key, byte[] value, byte[] proof) bool
+function **verifyMerkleProof**(int64 height, byte[] key, byte[] value, byte[] proof) bool
 
-verifyMerkleProof reassembles user parameters and call the the above precompiled contract to validate the proof. Any contract which need to verify merkle proof just need to import this Library.
+**verifyMerkleProof** reassembles user parameters and call the the above precompiled contract to validate the proof.
 
-## Other Build-in System Contract
+### Other Build-in System Contract
+
 * **TokenHub Contract**
 This contract focuses on token binding and cross chain token transfer.
 
-* **BSCValidatorSet contracts**
+* **BSCValidatorSet Contract**
 It is a watcher of validators change of BSC on Binance Chain. It will interact with light client contracts to verify the interchain transaction, and apply the validator set change for BSC. It also stores rewarded gas fee of blocking for validators, and distribute it to validators when receiving cross chain package of validatorSet change. 
    
-* **System Reward contract**
+* **System Reward Contract**
 The incentive mechanism for relayers to maintain system contracts. They will get rewards from system reward contract.
  
 * **Liveness Slash Contract**
 The liveness of BSC relies on validator set can produce blocks timely when it is their turn. Validators can miss their turns due to any reason. This instability of the operation will hurt the performance of the network and introduce more non-deterministic into the system. This contract responsible for recording the missed blocking metrics of each validator. Once the metrics are above the predefined threshold, the blocking reward for validator will not be relayed to BC for distribution but shared with other better validators.
 
+* **BscValidatorSet Contract**
+This contract focuses on handling staking change package from BC. It also provides the validatorset data query for BSC consensus engine.
+
 * **RelayerHub Contract**
 This contract manages the authority of bsc-relayer. Someone who wants to run a bsc-relayer must call the contract to deposit some BNB to get the authorization.
+
+* **Governance Contract**
+This contract handles governance packge from BC. A governance packge contains target contract address, parameter name and new parameter value. Once the package is verified, this contract will call the parameter update method of the target contract to update the parameter to new value.
+

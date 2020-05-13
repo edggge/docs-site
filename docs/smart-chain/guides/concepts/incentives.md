@@ -45,7 +45,7 @@ The role of relayers and their rewards comes from:
 
 |Relayer|Rewards come from|follow the distribution formula?|
 |---|---|---|
-|relayer for token transfer from BBC to BSC|BBC-BSC transfer reward|Yes.|
+|relayer for token transfer from BC to BSC|BC-BSC transfer reward|Yes.|
 |relayer for a light client on BSC|two-part:if the {validatorSet has changed}, get rewards from system reward.if interchain transfer contract use this block to verify the cross-chain transfer, should pay to the relayer who upload this block header.  |The first part is not;The second part is yes;|
 |relayer for validator change of BSC|System reward|No|
 |Relayer for transfer timeout from BC to BSC|System reward|No|

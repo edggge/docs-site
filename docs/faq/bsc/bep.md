@@ -2,25 +2,13 @@
 
 ## What is BEP2?
 
-A simple token protocol for easy management of asset on binance chain <https://github.com/binance-chain/BEPs/blob/master/BEP2.md>
+A simple token protocol for easy management of asset on Binance chain <https://github.com/binance-chain/BEPs/blob/master/BEP2.md>
 
 BNB is BEP2
 
 ## What is BEP2E?
 
-A token protocol on BSC which is compatible with BEP2 and ERC20. It contains:
-
-
-* Token Name
-* totalSupply
-* balanceOf
-* transfer
-* transferFrom
-* approve
-* allowance
-* Symbol
-* Decimal (up to 18)
-* Owner
+A token protocol on BSC which is compatible with BEP2 and [ERC20](https://eips.ethereum.org/EIPS/eip-20). It extends ERC20 and contains more interfaces, such as `getOwner` and `decimals`.
 
 ## What is BEP8?
 

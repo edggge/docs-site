@@ -32,23 +32,21 @@ We consider to set these parameters a reasonable value:
 3. For system rewards, R to be 10*{gas fee of sync light client}*S. We will reward a replayer 10 times of gas fee it has paid for the transaction. Assuming that the transaction to update a block header of light client consumes the most gas comparing to other transactions, the R to be 10*{gas fee of sync light client}*S.
 4. For interchain token transfer rewards, R is the total value that users would pay.
 
-
-
 ## Rewards Source and Allocation
 
 We have three reward source: 
 
-1. BC-BSC transfer reward: Rewards comes from the fee of token transfer from BC to BSC.
-2. System reward: Rewards comes from a fixed percentage of all gas fee on BSC.
+1. Users paid reward: Users who send `bind` or `cross chain transfer` transactions need to pay extra fee as bsc-relayer rewards.
+2. System reward: Rewards comes from `SytemReward` contract.
 
 The role of relayers and their rewards comes from:
 
-|Relayer|Rewards come from|follow the distribution formula?|
+|Relayer Behavior|Rewards come from|follow the distribution formula?|
 |---|---|---|
-|relayer for token transfer from BC to BSC|BC-BSC transfer reward|Yes.|
-|relayer for a light client on BSC|two-part:if the {validatorSet has changed}, get rewards from system reward.if interchain transfer contract use this block to verify the cross-chain transfer, should pay to the relayer who upload this block header.  |The first part is not;The second part is yes;|
-|relayer for validator change of BSC|System reward|No|
-|Relayer for transfer timeout from BC to BSC|System reward|No|
+|Deliver token `bind` or `transfer` package | Users who send `bind` or `cross chain transfer` transactions |Yes.|
+|Sync Binance Chain Header| First-part: if the Header contract Binance Chain validatorSet changes, `SytemReward` will pay some reward to relayers. Second-part: if the header is referenced in delivering other packages, part of package reward will be distributed to this header relayer. | The first part is not, the second part is yes |
+|Delivering BSC staking package |System reward|No|
+|Delivering refund package |System reward|No|
 
 ## Other Consideration 
 
@@ -63,8 +61,7 @@ Block header sync transaction and `validatorSet` change sync transaction will cl
 
 ### Foul Play
 For example, a relayer may deliver packages using a different address in round robin, we can’t recognize this. We try to introduce registration and BNB deposit for relayer to raise the cost of cheat.  How it works:
-* A BC account needs deposit 100BNB(more or less than 100 BNB will be rejected) to become a BSC relayer.
-* Only a valid relayer can deliver cross-chain package and claim the rewards.
+* A BSC account needs call `register` of [RelayerHub](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001006/contracts) contract to deposit 100BNB(more or less than 100 BNB will be rejected) to become a BSC relayer.
+* Only a valid relayer can sync Binance Chain Headers and deliver cross-chain packages.
 * Relayer can withdraw its deposit, but we will charge 0.1 BNB as the transaction fee so that it will receive 99.9 BNB back.
 * The charged fee will directly go to system reward pool.
-

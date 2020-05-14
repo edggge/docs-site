@@ -10,19 +10,17 @@ The total cost of transfer from BC to BSC is composed of 2 parts:
 
 The total cost of transfer from BSC to BC is composed of 2 parts:
 
-* Fee for Oracle-relayers 0.02BNB, pay for BSC relayers
+* Fee for Oracle-relayers 0.01BNB, pay for BSC relayers
 
-* Call TokenHub Contract: You need to pay BNB for calling smart-contract on BSC, this transaction is metered by gas, which is a global parameter. At the moment, you need to pay about ~ 0.001BNB.
+* Call TokenHub Contract: You need to pay BNB for calling smart-contract on BSC, this transaction is metered by gas, which is a global parameter. At the moment, you need to pay about 0.0005BNB ~ 0.0015BNB.
 
 ## What's is a BSC relayer?
 
-Relayer transport packages of Block Header and Merkle Proof verification to let BSC validators verify the block transactions and even the state value .
-
+BSC relayer monitors cross chain packages on Binance Chain, builds and broadcasts transactions to BSC to deliver these packages, which is the key of cross chain communication from Binance Chain to BSC.
 
 ## What's is an Oracle relayer?
 
-Oracle Relayer watches the state change of Binance Smart Chain. Once it catches Cross-Chain Communication Packages, it will submit to vote for the requests. After Oracle Relayers from ⅔ of the voting power of BC validators vote for the changes, the cross-chain actions will be performed. Only validators of Binance Chain are eligible to run Oracle relayers.
-
+Oracle Relayer watches the state change of Binance Smart Chain. Once it catches Cross-Chain Communication Events, it will submit to vote for the requests. After Oracle Relayers from ⅔ of the voting power of BC validators vote for the changes, the cross-chain actions will be performed. Only validators of Binance Chain are eligible to run Oracle relayers.
 
 ## What's an oracle?
 
@@ -30,4 +28,4 @@ In blockchain network, an oracle refers to the element that connects smart contr
 
 ## Which wallet support cross-chain transfer?
 
-You need to use [MyEtherWallet]() to call contracts and use  Binance Chain commandline client: `bnbcli`/ `tbnbcli` for complementry commands
+You need to use [MyEtherWallet]() to call contracts and use Binance Chain commandline client: `bnbcli`/ `tbnbcli` for complementary commands

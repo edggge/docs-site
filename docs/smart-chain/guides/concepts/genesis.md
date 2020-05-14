@@ -67,11 +67,11 @@ System controled address for collecting block rewards
 
 Allows to define a list of pre-filled wallets.
 
-| Contract Name         | Address                                   |ABI file name                                      |
+| Contract Name         | Address                                   | ABI file                                      |
 | ----------------------|-------------------------------------------|--------------------------------------------------- |
 | BSCValidatorSet       |[0x0000000000000000000000000000000000001000](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001000/contracts) |[bscvalidatorset](../../system-smart-contract/bscvalidatorset.abi)|
 | SlashIndicator        |[0x0000000000000000000000000000000000001001](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001001/contracts) |[slashindicator](../../system-smart-contract/slashindicator.abi)|
-| SystemReward          |[0x0000000000000000000000000000000000001002](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001002/contracts) | [systemreward](../../system-smart-contract/systemreward.abi)|
+| SystemReward          |[0x0000000000000000000000000000000000001002](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001002/contracts) |[systemreward](../../system-smart-contract/systemreward.abi)|
 | TendermintLightClient |[0x0000000000000000000000000000000000001003](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001003/contracts) |[tendermintlightclient](../../system-smart-contract/tendermintlightclient.abi) |
 | TokenHub              |[0x0000000000000000000000000000000000001004](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001004/contracts) |[tokenhub](../../system-smart-contract/tokenhub.abi)|
 | RelayerIncentivize    |[0x0000000000000000000000000000000000001005](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001005/contracts) |[relayerincentivize](../../system-smart-contract/relayerincentivize.abi)|

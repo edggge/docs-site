@@ -90,16 +90,16 @@ bnbcli bridge transfer-out --to 0xf9f609f9f4309f191654aa1fd691a6be6aefa7ac --exp
 
 | **parameter name**  | **example**                                                  | **comments**                                             | **required** |
 | ------------------- | ------------------------------------------------------------ | -------------------------------------------------------- | ------------ |
-| --chan-id           | Binance-Chain-XXX                                            | the chain id of binance  chain                           | Yes          |
+| --chan-id           | Binance-Chain-XXX                                            | the chain id of binance chain                            | Yes          |
 | --from              | alice                                                        | account name                                             | Yes          |
-| --channel-sequence  | 1                                                            | sequence of transfer in  channel                         | Yes          |
-| --contract-address  | 0x6aade9709155a8386c63c1d2e5939525b960b4e7                   | contract address of token  in smart chain                | Yes          |
-| --refund-address    | 0xf9f609f9f4309f191654aa1fd691a6be6aefa7ac,0x052c89fa5c2f01082a63e91a29130edceca10806 | refund addresses in smart  chain if transfer in failed   | Yes          |
-| --recipient-address | bnb1tfh30c67mkzfz  06as2hk0756mgdx8mgypu7ajl,bnb13ls59kuvaaxq7a05rpps6z5r72nqcla3tuc4nc | recipient addresses on  binance chain                    | Yes          |
+| --channel-sequence  | 1                                                            | sequence of transfer in channel                          | Yes          |
+| --contract-address  | 0x6aade9709155a8386c63c1d2e5939525b960b4e7                   | contract address of token in smart chain                 | Yes          |
+| --refund-address    | 0xf9f609f9f4309f191654aa1fd691a6be6aefa7ac,0x052c89fa5c2f01082a63e91a29130edceca10806 | refund addresses in smart chain if transfer in failed   | Yes          |
+| --recipient-address | bnb1tfh30c67mkzfz06as2hk0756mgdx8mgypu7ajl,bnb13ls59kuvaaxq7a05rpps6z5r72nqcla3tuc4nc | recipient addresses on binance chain                    | Yes          |
 | --amount            | 1000,10000                                                   | amount of tokens                                         | Yes          |
 | --symbol            | BNB                                                          | symbol of transfer token                                 | Yes          |
-| --relay-fee         | 1000:BNB                                                     | relay fee for transfer in  transaction                   | Yes          |
-| --expire-time       | 1594715271                                                   | expire time of transfer  in transaction on binance chain | Yes          |
+| --relay-fee         | 1000:BNB                                                     | relay fee for transfer in transaction                    | Yes          |
+| --expire-time       | 1594715271                                                   | expire time of transfer in transaction on binance chain  | Yes          |
 
 #### For example**
 

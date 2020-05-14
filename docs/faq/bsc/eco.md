@@ -5,3 +5,5 @@
 Future coding competitions; Hackathons
 
 ## Who is already using Binance Side Chain?
+
+Binance Side Chain is welcoming everyone.

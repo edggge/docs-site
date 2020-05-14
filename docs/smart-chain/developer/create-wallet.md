@@ -19,7 +19,16 @@ If the installation and instantiation of web3 was successful, the following shou
 ```javascript
     const account = web3.eth.accounts.create();
 ```
+
+## Recover account
+
+If you have backup the private key of your account, you can use it to restore your account.
+```javascript
+	const account = web3.eth.accounts.privateKeyToAccount("$private-key")
 ```
+
+## Full Example
+```javascript
 const Web3 = require('web3');
 async function main() {
 

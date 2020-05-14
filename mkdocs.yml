@@ -71,7 +71,7 @@ nav:
     - Wallet:
       - MetaMask Guides: smart-chain/wallet/metamask.md
       - Ledger: smart-chain/wallet/ledger.md
-      - Ledger: smart-chain/wallet/myetherwallet.md
+      - MEW: smart-chain/wallet/myetherwallet.md
   - Developers:
     - Binance Chain Fullnode:
       - Install: guides/node/install.md
@@ -103,7 +103,11 @@ nav:
       - Node RPC Swagger: rpc-swagger/index.html
       - CHANGELOG: changelog.md
     - Binance Smart Chain:
+      - Binance Smart Chain Fullnode: smart-chain/developer/fullnode.md
+      - BSC Relayer: smart-chain/developer/bsc-relayer-guide.md
       - BEP2E Tokens: smart-chain/developer/BEP2E.md
+      - General:
+        - Create Wallet: smart-chain/developer/create-wallet.md
   - Wallets:
     - Binance Chain Walletsupport: wallets/wallets.md
     - Wallet Tutorial:

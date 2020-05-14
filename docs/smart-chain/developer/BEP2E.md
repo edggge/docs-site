@@ -1,35 +1,23 @@
-# BEP2E Contract Interface
+# BEP2E Token
 
+A BEP2E token must implement the interface `IBEP2E` in [IBEP2E.sol](IBEP2E.sol). This is a template contract [BEP2EToken.template](BEP2EToken.template). Users just need to fill in `_name`, `_symbol`, `_decimals` and `_totalSupply` according to their own requirements: 
 ```
-  function totalSupply() external view returns (uint256);
+  constructor() public {
+    _name = {{TOKEN_NAME}};
+    _symbol = {{TOKEN_SYMBOL}};
+    _decimals = {{DECIMALS}};
+    _totalSupply = {{TOTAL_SUPPLY}};
+    _balances[msg.sender] = _totalSupply;
 
-  function decimals() external view returns (uint256);
-
-  function symbol() external view returns (string memory);
-
-  function getOwner() external view returns (address);
-
-  function balanceOf(address account) external view returns (uint256);
-
-  function transfer(address recipient, uint256 amount) external returns (bool);
-
-  function allowance(address _owner, address spender) external view returns (uint256);
-
-  function approve(address spender, uint256 amount) external returns (bool);
-
-  function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-
-  event Transfer(address indexed from, address indexed to, uint256 value);
-
-  event Approval(address indexed owner, address indexed spender, uint256 value);
+    emit Transfer(address(0), msg.sender, _totalSupply);
+  }
 ```
 
-BEP2E Smart Contract ABI: [ABI.json](BEP2E.json)
+Then users can use [Remix IDE](https://remix.ethereum.org) and [Metamask](../wallet/metamask.md) to compile and deploy the BEP2E contract to BSC.
 
-You can follow the steps below to interact with the smart contract by using Web3 library and NodeJS.
+## Interact with Contract with [Web3](https://www.npmjs.com/package/web3) and NodeJS.
 
-
-## Connect to Binance Smart Chain's public RPC endpoint
+### Connect to Binance Smart Chain's public RPC endpoint
 
 ```JavaScript
 const Web3 = require('web3');
@@ -37,7 +25,7 @@ const Web3 = require('web3');
 const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545');
 ```
 
-## Create a wallet
+### Create a wallet
 
 ```javascript
 web3.eth.accounts.create([entropy]);
@@ -56,7 +44,7 @@ web3.eth.accounts.create();
 
 ```
 
-## Recover a wallet
+### Recover a wallet
 
 ```javascript
 
@@ -65,7 +53,7 @@ const account = web3.eth.accounts.privateKeyToAccount("0xe500f5754d761d74c3eb6c2
 ```
 
 
-## Check balance
+### Check balance
 
 ```javascript
 web3.eth.getBalance(holder).then(console.log);
@@ -80,7 +68,7 @@ The balance will be bumped by e18 for BNB.
 6249621999900000000
 ```
 
-## Create transaction
+### Create transaction
 
 **Parameters**
 
@@ -111,7 +99,7 @@ The balance will be bumped by e18 for BNB.
     });
 ```
 
-## Call BEP2E contract
+### Call BEP2E contract
 
 ```
 

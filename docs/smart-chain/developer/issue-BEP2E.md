@@ -8,10 +8,10 @@
 
 ![img](https://lh3.googleusercontent.com/aLlINgoy2Luj45ZKVxPTExUS4I2QoX3WHzmLbO7_CJHQiL3plGvx0iCaI2YTGE8QmnhytN-HDOPvhGixQ7utrA_o9UJJVaujmQ5yj7ET8ju12Jh0luVtZHgpLGmOx9LUoFnzu2Eg)
 
-3. Create new contract BEP2EToken.sol and copy contract code from the bep2e token template [here](../../developer/BEP2EToken.template)
+3. Create new contract BEP2EToken.sol and copy contract code from the bep2e token template [here](BEP2EToken.template)
 
 
-4. Modify “name”, “symbol”, “decimals” and “totalSupply” according to your requirements. 
+4. Modify “name”, “symbol”, “decimals” and “totalSupply” according to your requirements.
 
 ![img](https://lh3.googleusercontent.com/eRrCyCEp4d-jRs53osxiEssFtpC42ZeOBXF4R78WU8cYRd-gbhHahhoMH0e2LW3jj2paRc12VqC6aSxO_HnZ29ZyQgrXGfYeaCV8BRSFJ93T77sTXirBQwz3LfhkK3KWW7w2Thfm)
 

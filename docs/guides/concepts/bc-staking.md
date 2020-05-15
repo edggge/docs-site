@@ -167,7 +167,7 @@ bnbcli staking bsc-unbond --chain-id Binance-Chain-Kongo --side-chain-id bsc-c1-
 
 ### Query side chain vaildator by operator
 
-#### Parameters for staking side-validator --help**
+#### Parameters for staking side-validator
 
 | **parameter name** | **example**       | **comments**                                         | **required** |
 | ------------------ | ----------------- | ---------------------------------------------------- | ------------ |
@@ -216,3 +216,168 @@ bnbcli staking side-delegation bnb1hz5sg3u0v4gq2veyw5355z7qx6y7uuqhcqre0d bva1hz
 ```bash
 bnbcli staking side-delegations bnb1hz5sg3u0v4gq2veyw5355z7qx6y7uuqhcqre0d --side-chain-id bsc --node=0.0.0.0:26657 --chain-id=Binance-Chain-Kongo --trust-node
 ```
+
+###  Query side chain unbonding delegation
+
+#### Parameters for staking side-unbonding-delegation
+
+**Usage:**
+```bash
+bnbcli staking side-unbonding-delegation [delegator-addr] [operator-addr] [flags]
+```
+
+| **parameter  name** | **example**       | **comments**                                        | **required** |
+| ------------------- | ----------------- | --------------------------------------------------- | ------------ |
+| --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
+| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+
+**For example**
+```bash
+bnbcli staking     side-unbonding-delegation bnb1rtzy6szuyzcj4amfn6uarvne8a5epxrdklwhhj      bva12hlquylu78cjylk5zshxpdj6hf3t0tahqmr98n --side-chain-id=bsc     --chain-id=test-chain-8d7sJz --home ~/home_cli
+```
+ 
+
+### Query side chain unbonding delegations by delegator
+
+#### Parameters for staking side-unbonding-delegations 
+
+**Usage:**
+```bash
+bnbcli staking side-unbonding-delegations [delegator-addr] [flags]
+```
+
+| **parameter  name** | **example**       | **comments**                                        | **required** |
+| ------------------- | ----------------- | --------------------------------------------------- | ------------ |
+| --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
+| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+
+**For example**
+```bash
+bnbcli staking     side-unbonding-delegations bnb1rtzy6szuyzcj4amfn6uarvne8a5epxrdklwhhj     --side-chain-id=bsc --chain-id=test-chain-8d7sJz --home ~/home_cli
+```
+ 
+
+###  Query side chain unbonding delegations by validator
+
+#### Parameters for staking side-val-unbonding-delegations
+
+**Usage:**
+```bash
+bnbcli staking side-val-unbonding-delegation [operator-addr] [flags]
+```
+
+| **parameter  name** | **example**       | **comments**                                        | **required** |
+| ------------------- | ----------------- | --------------------------------------------------- | ------------ |
+| --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
+| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+
+**For example**
+```bash
+bnbcli staking     side-val-unbonding-delegations bva12hlquylu78cjylk5zshxpdj6hf3t0tahqmr98n     --side-chain-id=bsc --chain-id=test-chain-8d7sJz --home ~/home_cli
+```
+ 
+### Query side chain re-delegation
+
+#### Parameters for staking side-redelegation 
+
+**Usage:**
+```bash
+bnbcli staking side-redelegation [delegator-addr] [src-operator-addr] [dst-operator-addr] [flags]
+```
+
+| **parameter  name** | **example**       | **comments**                                        | **required** |
+| ------------------- | ----------------- | --------------------------------------------------- | ------------ |
+| --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
+| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+
+**For example**
+```bash
+bnbcli staking     side-redelegation bnb1rtzy6szuyzcj4amfn6uarvne8a5epxrdklwhhj     bva12hlquylu78cjylk5zshxpdj6hf3t0tahqmr98n      bva1hz5sg3u0v4gq2veyw5355z7qx6y7uuqhcuzf3f --side-chain-id=bsc     --chain-id=test-chain-8d7sJz --home ~/home_cli
+```
+ 
+### Query side chain re-delegations by delegator
+
+#### Parameters for staking side-redelegations 
+
+**Usage:**
+```bash
+bnbcli staking side-redelegations [delegator-addr] [flags]
+```
+
+| **parameter  name** | **example**       | **comments**                                        | **required** |
+| ------------------- | ----------------- | --------------------------------------------------- | ------------ |
+| --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
+| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+
+**For example**
+```bash
+bnbcli staking     side-redelegations bnb1rtzy6szuyzcj4amfn6uarvne8a5epxrdklwhhj     --side-chain-id=bsc --chain-id=test-chain-8d7sJz --home ~/home_cli
+```
+ 
+
+### Query side chain re-delegations by validator
+
+#### Parameters for staking side-val-redelegations
+
+**Usage:**
+```bash
+bnbcli staking side-val-redelegations [operator-addr] [flags]
+```
+| **parameter  name** | **example**       | **comments**                                        | **required** |
+| ------------------- | ----------------- | --------------------------------------------------- | ------------ |
+| --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
+| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+
+**For example**
+```bash
+bnbcli staking     side-val-redelegations bva12hlquylu78cjylk5zshxpdj6hf3t0tahqmr98n     --side-chain-id=bsc --chain-id=test-chain-8d7sJz --home ~/home_cli
+```
+ 
+
+### Query side chain staking pool
+
+#### Parameters for staking side-pool
+
+| **parameter  name** | **example**       | **comments**                                        | **required** |
+| ------------------- | ----------------- | --------------------------------------------------- | ------------ |
+| --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
+| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+
+
+**For example**
+```bash
+bnbcli staking     side-pool --side-chain-id=bsc --chain-id=test-chain-8d7sJz --home     ~/home_cli
+```
+ 
+
+###  Query side chain top validators
+
+#### Parameters for  staking side-top-validators
+
+| **parameter  name** | **example**       | **comments**                                                 | **required** |
+| ------------------- | ----------------- | ------------------------------------------------------------ | ------------ |
+| --chan-id           | Binance-Chain-XXX | the chain id of binance chain                                | Yes          |
+| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to          | Yes          |
+| --top               | 10                | number of validators to be returned. set as maximum number of  validators  by default | Option       |
+
+**For example**
+```bash
+bnbcli staking     side-top-validators --top 10 --side-chain-id=bsc     --chain-id=test-chain-8d7sJz --home ~/home_cli
+```
+ 
+
+###  Query side chain validators count
+
+#### Parameters for staking side-validators-count
+
+| **parameter  name** | **example**       | **comments**                                                 | **required** |
+| ------------------- | ----------------- | ------------------------------------------------------------ | ------------ |
+| --chan-id           | Binance-Chain-XXX | the chain id of binance chain                                | Yes          |
+| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to          | Yes          |
+| --jail-involved     | true              | if true, meaning that the jailed validators will be involved to count | Option       |
+
+**For example**
+```bash
+bnbcli staking     side-validators-count --jail-involved --side-chain-id=bsc     --chain-id=test-chain-8d7sJz --home ~/home_cli
+```
+ 

@@ -3,6 +3,7 @@
 ## What's the role of a delegator?
 
 
+
 ## How to delegate my BNB?
 
 
@@ -12,4 +13,5 @@ The minimum delegated amount is **1BNB**.
 
 ## How to claim my rewards?
 
+The rewards will be distributed to every delegators from `bscvalidator` smart contract everyday.
 

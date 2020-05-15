@@ -4,6 +4,13 @@
 
 BC <-> BSC bridge for self transfers of BEP2 tokens to BEP2E (ERC20 representation). The bridge connects two chains (BC and BSC). When a user deposits BEP2 into the bridge contract contract on BC they get the same amount of BEP2E tokens on BSC, and they can convert them back as well.
 
+A purely-code-controlled escrow account is a kind of account which is derived from a hard-coded string in binance chain protocol. This kind of account has no its own private key and it's only controled by code in protocol. The code for calculating escrow account is the same as how it's done in [cosmos-sdk](https://github.com/cosmos/cosmos-sdk/blob/82a2c5d6d86ffd761f0162b93f0aaa57b7f66fe7/x/supply/internal/types/account.go#L40):
+```
+AtomicSwapCoinsAccAddr = sdk.AccAddress(crypto.AddressHash([]byte("BinanceChainPegAccount")))
+```
+The account for mainnet is: **bnb1v8vkkymvhe2sf7gd2092ujc6hweta38xadu2pj** and the account for testnet is: **tbnb1v8vkkymvhe2sf7gd2092ujc6hweta38xnc4wpr**. Once the swap is claimed or refunded, the fund will be transfered from the purely-code-controlled escrow account to client accounts.
+
+
 ## Commands
 
 ### Bind

@@ -4,29 +4,29 @@
 
 There are many system parameters to control the behavior of the BSC:
 
-**a.**     **slashing threshold, cross-chain transfer fees, relater reward amount etc. All these parameters are all in system contracts and should be flexible.**
+**a.**     **All these parameters of BSC system contracts should be flexible: slashing threshold, cross-chain transfer fees, relayer reward amount**
 
-**b.**     **params on BBC.**
+**b.**     **BC parameters**
 
-All these parameters will be determined by BSC Validator Set together through a proposal-vote process based on their staking. Such the process will be carried on BC, and the new parameter values will be picked up by corresponding system contracts via a cross-chain communication.
+All these smart-contract parameters will be determined by BSC Validator Set together through a proposal-vote process based on their staking. Such the process will be carried on BC, and the new parameter values will be picked up by corresponding system contracts via a cross-chain communication.
 
 ## Design Principles
 
-For BC:
+**For BC:**
 
-a.  Code reuse. Reuse most of the structure of proposal and vote, and the logic about propose and vote.
+a.  Codebase reuse: Reuse most of the structure of proposal and vote, and the logic about propose and vote.
 
-b. Available at once. The cross chain package should be available once the proposal passed.
+b. Available at once: The cross-chain package should be available once the proposal passed.
 
-For BSC:
+**For BSC:**
 
-a.  Uniform interface. The contracts who are interested with these parameters only need implement thea same interface.
+a.  Uniform interface. The contracts who are interested in these parameters only need to implement the same interface.
 
-b. Extensible. When add new system contract, there is no need to modify any other contracts.
+b. Extensible. When adding a new system contract, there is no need to modify any other contracts.
 
-c.  Failure toleration. Can skip false proposal and go on.
+c.  Failure toleration. Validators could vote to skip false proposals and go on.
 
-d. Multiplexing. Now we have only parameters gov, but in future we may have be more gov func.
+d. Multiplexing. Now we have only parameters gov, but in the future, there will be more governance functions.
 
 ### Workflow
 

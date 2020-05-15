@@ -104,10 +104,15 @@ nav:
       - CHANGELOG: changelog.md
     - Binance Smart Chain:
       - Binance Smart Chain Fullnode: smart-chain/developer/fullnode.md
-      - BSC Relayer: smart-chain/developer/bsc-relayer-guide.md
+      - BSC Relayer: smart-chain/developer/bsc-relayer.md
       - BEP2E Tokens: smart-chain/developer/BEP2E.md
       - General:
         - Create Wallet: smart-chain/developer/create-wallet.md
+        - BEP2E:
+          - Issue Token: smart-chain/developer/issue-BEP2E.md
+          - Bind Token: smart-chain/developer/bind-tokens.md
+          - Cross-chain Transfer: smart-chain/validator/cross-chain-transfer.md
+
   - Wallets:
     - Binance Chain Walletsupport: wallets/wallets.md
     - Wallet Tutorial:
@@ -123,6 +128,7 @@ nav:
   - Binance Chain Forum: https://community.binance.org/
   - Binance DEX Testnet: https://testnet.binance.org
   - Chain Explorer Testnet: https://testnet-explorer.binance.org
+  - Binance Smart Chain Faucet: https://testnet.binance.org/faucet-smart
   - Get Testnet Funds: https://www.binance.vision/tutorials/binance-dex-funding-your-testnet-account
   - The Binance Chain Telegram Group : https://t.me/BinanceDEXchange
   - Twitter: https://twitter.com/binance_dex

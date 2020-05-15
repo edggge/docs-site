@@ -4,9 +4,9 @@
 We target to design the consensus engine of BSC(Binance Smart Chain) to achieve the following goals:
 
 1. Wait a few blocks to confirm(should be less than Ethereum 1.0), better no fork in most cases.
-2. Blocking time should be shorter than Ethereum 1.0, i.e. 5 seconds or less.  
-3. No inflation, the block reward is transaction gas fees. 
-4. As much as compatible as Ethereum.  
+2. Blocking time should be shorter than Ethereum 1.0, i.e. 5 seconds or less.
+3. No inflation, the block reward is transaction gas fees.
+4. As much as compatible as Ethereum.
 5. With staking and governance as powerful as cosmos.
 
 
@@ -20,18 +20,18 @@ We investigated some popular implementations of PoA consensus and find out that 
 
 ## Infrastructure Components
 
-1. **Binance Chain**. It is responsible for holding the staking function to determine validators of BSC through independent election, and the election workflow are performed via staking procedure. 
+1. **Binance Chain**. It is responsible for holding the staking function to determine validators of BSC through independent election, and the election workflow are performed via staking procedure.
 2. **BSC validators**. Validators are responsible for validating transactions and generating blocks, ensuring the network’s security and the consistency of the ledger. In return, they receive rewards from the gas consumption of transactions.
 3. **Staking dApps on BSC(also named as system contract)**. There are several genesis contracts to help implement staking on BSC. Five classification groups of them:
     - **Light client contracts**. It is a watcher of distributed consensus process implemented by contract that only validates the consensus algorithm of Binance Chain.
-    - **BSCValidatorSet contracts**. It is a watcher of validators change of BSC on Binance Chain. It will interact with light client contracts to verify the interchain transaction, and apply the validator set change for BSC. It also stores rewarded gas fee of blocking for validators, and distribute it to validators when receiving cross chain package of validatorSet change. 
+    - **BSCValidatorSet contracts**. It is a watcher of validators change of BSC on Binance Chain. It will interact with light client contracts to verify the interchain transaction, and apply the validator set change for BSC. It also stores rewarded gas fee of blocking for validators, and distribute it to validators when receiving cross chain package of validatorSet change.
     - **System Reward contract**. The incentive mechanism for relayers to maintain system contracts. They will get rewards from system reward contract.
     - **Liveness Slash Contract**. The liveness of BSC relies on validator set can produce blocks timely when it is their turn. Validators can miss their turns due to any reason. This instability of the operation will hurt the performance of the network and introduce more non-deterministic into the system. This contract responsible for recording the missed blocking metrics of each validator. Once the metrics are above the predefined threshold, the blocking reward for validator will not be relayed to BC for distribution but shared with other better validators.
     - **Other contract**. The BSC may take advantage of powerful governance of Binance Chain in future, for example, propose to change a parameter of genesis. We will take this part into consideration to make it extensible.
 
 Staking and Governance on Binance chain is at a higher layer upon consensus. As for Relayer, it is a standalone process and open about how to implement it. The detail of them will not be included in this doc.
 
-This doc only focus on the **BSC validators** and **Staking dApps** on BSC parts which are more closely to consensus engine. 
+This doc only focus on the **BSC validators** and **Staking dApps** on BSC parts which are more closely to consensus engine.
 
 ## System Reward Distribution
 The system reward structure in BSC is highly configurable. We may adjust the parameters through governance.
@@ -51,48 +51,52 @@ We can consider light client contract as a utility contract, we will not explain
 
    The block header of Binance chain must have synced before verifying any state against block at specified height.
 - **validateMerkleProof(bytes32 appHash, string memory storeName, bytes memory key, bytes memory value, bytes memory proof)**
-    
+
    It will verify the existence key value or the absence of the key against the block at specified height.
 - **getAppHash(uint64 height) external**
-    
-   return the appHash of BC at specified height. 
+
+   return the appHash of BC at specified height.
 
 ### BSCValidatorSet contract
 It is a watcher of validators change of BSC on Binance chain. It implement the following interfaces:
 
 - **handlePackage(bytes calldata msgBytes, bytes calldata proof, uint64 height, uint64 packageSequence)**
-    
-   **Conditions**:
-   
+
+**Conditions**:
+
         1. Sequence in order.
         2. Call MerkleProof lib to verify the msgBytes.
-               
-    **Action**: 
-    
-        1. if the first byte of msgBytes is 0x00, do *Actions validators update*;
-        2. if the first byte of msgBytes is 0x01, do *Actions jail*.
-               
-    **Actions jail**:
-    
+
+**Action**:
+
+        1. if the first byte of msgBytes is 0x00, do Actions validators update;
+        2. if the first byte of msgBytes is 0x01, do Actions jail.
+
+**Actions jail**:
+
         1. mark the validator as jailed.
         2. reward the msg sender by call sytem reward contract.
-    **Actions validators update**:
-    
+
+**Actions validators update**:
+
         1. Do distribue the incoming of validators: if the incoming is large than 0.1 BNB, will do cross chain transfer to its account on BC, otherwise will transfer to its address on BSC.
         2. Update the latest validatorSet.
         3. Clean the metrics record on slash contract.
         4. Reward the msg sender by call sytem reward contract.
-- **CurrentValidator() returns ([]address)**
-    
+
+**CurrentValidator() returns ([]address)**
+
     returns the validators that is not jailed.
-- **deposit(address valAddr) external**
-    
-    **Conditions**: 
-    
-        1. The message sender must be the coinbase 
+
+**deposit(address valAddr) external**
+
+**Conditions**:
+
+        1. The message sender must be the coinbase
         2. Can only call once in one block.
-    **Actions**:
-    
+
+**Actions**:
+
         1. Add the incoming of the validator.
 
 ### System Reward contract
@@ -101,34 +105,34 @@ For now, only **Light Client contract**, **BSCValidatorSet contract** and **Toke
 - **claimRewards(address payable to, uint256 amount) external**
 
     **Conditions**:
-    
+
         1. The message sender must in permission list.
         2. The amount should be no more than 1 BNB
-        
+
     **Actions**:
-    
+
         1. Transfer amount of BNB to specified address
 
 ### Liveness Slash contract
 If a validator failed to produce a block, will record it and finally slash it. It implement the following interfaces:
 
 - **Slash(validator address) external**
-    
+
     **Conditions:
-    
+
         1. The message sender must in coinbase.
         2. can only call once in one block.
-        
+
     **Actions**:
-    
-        1. increase the missing blocks metrics of the validator by one. 
+
+        1. increase the missing blocks metrics of the validator by one.
         2. if the missing blocks metrics is times of 50, will call misdemeanor func of BSCValidatorSet contract to trigger a misdemeanor event and distribute the incoming of the validator to others.
         3. if the missing blocks metrics is times of 150, will call felony func of BSCValidatorSet contract to trigger a felony event, not only slash the incoming, but also kick the validator out of validatorset.
 
 
 ## Consensus Protocol
 
-The implement of the consensus engine is named as **Parlia** which is similar to [clique](https://ethereum-magicians.org/t/eip-225-clique-proof-of-authority-consensus-protocol/1853). This doc will focus more on the difference and ignore the common details. 
+The implement of the consensus engine is named as **Parlia** which is similar to [clique](https://ethereum-magicians.org/t/eip-225-clique-proof-of-authority-consensus-protocol/1853). This doc will focus more on the difference and ignore the common details.
 
 Before introducing, we would like to clarify some terms:
 
@@ -139,7 +143,7 @@ Before introducing, we would like to clarify some terms:
 ### Key features
 
 #### Light client security
-Validators set changes take place at the (epoch+N/2) blocks. (N is the size of validatorset before epoch block). Considering the security of light client, we delay N/2 block to let validatorSet change take place. 
+Validators set changes take place at the (epoch+N/2) blocks. (N is the size of validatorset before epoch block). Considering the security of light client, we delay N/2 block to let validatorSet change take place.
 
 Every epoch block, validator will query the validatorset from contract and fill it in the extra_data field of block header. Full node will verify it against the validatorset in contract. A light client will use it as the validatorSet for next epoch blocks, however, it can not verify it against contract, it have to believe the signer of the epoch block. If the signer of the epoch block write a wrong extra_data, the light client may just go to a wrong chain. If we delay N/2 block to let validatorSet change take place, the wrong
 epoch block won’t get another N/2 subsequent blocks that signed by other validators, so that the light client are free of such attack.

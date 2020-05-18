@@ -15,7 +15,8 @@ Please refer to this [guide](../validator/cross-chain-transfer.md)
 ## Choose a validator
 
 You can use `tbnbcli` for querying the [list of current validators](../../guides/concepts/bc-staking.md#query-side-chain-top-validators).
-```
+
+```bash
 tbnbcli staking side-top-validators --top 10 --side-chain-id=714 --chain-id=binance-chain-kongo
 ```
 
@@ -23,6 +24,7 @@ tbnbcli staking side-top-validators --top 10 --side-chain-id=714 --chain-id=bina
 
 You can use `tbnbcli` to [delegate](../../guides/concepts/bc-staking.md#delegate-bnb) some of BNB to a validator
 
+Go to [explorer](https://explorer.binance.org/testnet/) to verify your transactions.
 
 ## Undelegate BNB
 

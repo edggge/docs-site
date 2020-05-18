@@ -26,7 +26,7 @@ BNB
 * Submitter Reward: 1000BNB
 
 
-* DoubleSign Jail time: 2^64 seconds
+* DoubleSign Jail time: 2^63-1 seconds
 * Downtime Jail time: 2 days
 * Too Low self-delegation Jail time: 1 day
 

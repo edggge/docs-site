@@ -65,8 +65,12 @@ nav:
         - Oracle Module: smart-chain/guides/concepts/oracle-module.md
         - Oracle Relayer: smart-chain/guides/concepts/oracle-relayer.md
         - Relayer Incentives: smart-chain/guides/concepts/incentives.md
-    - Validator:
-      - Guideline: smart-chain/validator/guideline.md
+    - Staking:
+      - Validator:
+        - Guides: smart-chain/validator/guideline.md
+        - Become Candidate: smart-chain/validator/candidate.md
+        - Staking parameters: smart-chain/validator/Parameters.md
+      - Delegator Guide: smart-chain/delegator/del-guide.md
     - Binance Smart Chain Explorer: https://explorer.binance.org/smart-testnet
     - Wallet:
       - MetaMask Guides: smart-chain/wallet/metamask.md
@@ -128,8 +132,9 @@ nav:
   - Binance Chain Forum: https://community.binance.org/
   - Binance DEX Testnet: https://testnet.binance.org
   - Chain Explorer Testnet: https://testnet-explorer.binance.org
-  - Binance Smart Chain Faucet: https://testnet.binance.org/faucet-smart
   - Get Testnet Funds: https://www.binance.vision/tutorials/binance-dex-funding-your-testnet-account
+  - Binance Smart Chain Testnet Explorer: https://explorer.binance.org/smart-testnet
+  - Binance Smart Chain Faucet: https://testnet.binance.org/faucet-smart
   - The Binance Chain Telegram Group : https://t.me/BinanceDEXchange
   - Twitter: https://twitter.com/binance_dex
   - Telegram Announcement Channel English: https://t.me/Binance_DEX_Announcement
@@ -148,7 +153,7 @@ nav:
       - Staking:
         - Validator: faq/bsc/val.md
         - Delegator: faq/bsc/del.md
-      - Crosschain: faq/bsc/del.md
+      - Crosschain: faq/bsc/cross.md
   - More Help: resources.md
   - Contributing: CONTRIBUTING.md
 

@@ -7,7 +7,7 @@ Binance Smart Chain is an innovative solution to bring programmability and inter
 The Binance Smart Chain also supports EVM-compatible smart contracts and protocols. Cross-chain transfer and other communication are possible due to native support of interoperability. Binance DEX remains a liquid venue of the exchange of assets on both chains. This dual-chain architecture will be ideal for users to take advantage of the fast trading on one side and build their decentralized apps on the other side.
 **The Binance Smart Chain will be:**
 
-* **A self-sovereign blockchain**: Provides security and safety with elected [validators]().
+* **A self-sovereign blockchain**: Provides security and safety with elected [validators](./concepts/consensus.md).
 * **EVM-compatible**: Supports all the existing Ethereum tooling along with faster finality and cheaper transaction fees.
 * **Interoperable**: Comes with efficient native dual chain communication; Optimized for scaling high-performance dApps that require fast and smooth user experience.
 * **Distributed with on-chain governance**: Proof of Staked Authority brings in decentralization and community participants.

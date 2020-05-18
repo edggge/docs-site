@@ -15,7 +15,7 @@ The state defined in the genesis file contains all the necessary information, li
 
 * **chainId**
 
-**714** for main-net and **1417** for test-net.  To compatible with third part service that already supports Ethereum, we’d better not use network id that Ethereum ecology that already used.  The network id of test-net should be distinct from main-net.
+**66** for main-net and **96** for test-net.  To compatible with third part service that already supports Ethereum, we’d better not use network id that Ethereum ecology that already used.  The network id of test-net should be distinct from main-net.
 
 
 * **period**

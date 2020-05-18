@@ -42,7 +42,7 @@ Validators are ranked by their power and operator address. The more its delegati
 | --commission-rate            | 80000000(that means 0.8  or 80%)     | The initial commission  rate percentage, it has 8 decimal places. | Yes          |
 | --commission-max-rate        | 95000000  (0.95 or 95%)              | The maximum commission  rate percentage, it has 8 decimal places. | Yes          |
 | --commission-max-change-rate | 3000000   (0.03 or 3%)               | The maximum commission  change rate percentage (per day)     | Yes          |
-| --side-chain-id              | BSC-XXX                              | chain-id of the side  chain the validator belongs to         | Yes          |
+| --side-chain-id              | rialto                               | chain-id of the side  chain the validator belongs to         | Yes          |
 | --side-cons-addr             | 0x1234abcd                           | consensus address of the  validator on side chain, please use hex format prefixed with 0x | Yes          |
 | --side-fee-addr              | 0xabcd1234                           | address that validator  collects fee rewards on side chain, please use hex format prefixed with 0x | Yes          |
 | --home                       | /path/to/cli_home                    | home directory of bnbcli  data and config, default to “~/.bnbcli” | No           |
@@ -83,7 +83,7 @@ c. use “**bnbcli broadcast**” to send the transaction from above to the bloc
 | ------------------ | -------------------------------- | ------------------------------------------------------------ | ------------ |
 | --chan-id          | Binance-Chain-XXX                | the chain id of binance  chain                               | Yes          |
 | --from             | bnb1xxx/tbnb1xxx                 | address of private key  with which to sign this tx, that also indicate the validator that you want to  edit. | Yes          |
-| --side-chain-id    | BSC-XXX                          | chain-id of the side  chain the validator belongs to         | Yes          |
+| --side-chain-id    | rialto                           | chain-id of the side  chain the validator belongs to         | Yes          |
 | --moniker          | myval1                           | validator name (default  "[do-not-modify]")                  | No           |
 | --identity         | xxx                              | optional identity  signature (ex. UPort or Keybase) (default "[do-not-modify]") | No           |
 | --website          | www.example.com                  | optional website (default  "[do-not-modify]")                | No           |
@@ -116,7 +116,7 @@ tbnbcli staking bsc-edit-validator --chain-id Binance-Chain-Kongo --side-chain-i
 | ------------------ | ------------------------ | ------------------------------------------------------------ | ------------ |
 | --chan-id          | Binance-Chain-XXX        | the chain id of binance  chain                               | Yes          |
 | --from             | bnb1xxx/tbnb1xxx         | address of private key  with which to sign this tx, that is also the delegator address | Yes          |
-| --side-chain-id    | BSC-XXX                  | chain-id of the side  chain the validator belongs to         | Yes          |
+| --side-chain-id    | rialto                   | chain-id of the side  chain the validator belongs to         | Yes          |
 | --validator        | bva1xxx                  | bech32 address of the  validator, starts with “bva”          | Yes          |
 | --amount           | 1000000000:BNB  (10 BNB) | delegation amount, it has  8 decimal places                  | Yes          |
 
@@ -140,7 +140,7 @@ bnbcli staking bsc-delegate --chain-id Binance-Chain-Kongo --side-chain-id rialt
 | ----------------------- | ------------------------ | ------------------------------------------------------------ | ------------ |
 | --chan-id               | Binance-Chain-XXX        | the chain id of binance  chain                               | Yes          |
 | --from                  | bnb1xxx/tbnb1xxx         | address of private key  with which to sign this tx, that is also the delegator address | Yes          |
-| --side-chain-id         | BSC-XXX                  | chain-id of the side  chain the validator belongs to         | Yes          |
+| --side-chain-id         | rialto                   | chain-id of the side  chain the validator belongs to         | Yes          |
 | --addr-validator-source | bva1xxx                  | bech32 address of the  source validator, starts with “bva”   | Yes          |
 | --addr-validator-dest   | bva1yyy                  | bech32 address of the  destination validator, starts with “bva” | Yes          |
 | --amount                | 1000000000:BNB  (10 BNB) | delegation amount, it has  8 decimal places                  | Yes          |
@@ -169,7 +169,7 @@ tbnbcli staking bsc-redelegate --chain-id Binance-Chain-Kongo --side-chain-id ri
 | ------------------ | ------------------------ | ------------------------------------------------------------ | ------------ |
 | --chan-id          | Binance-Chain-XXX        | the chain id of binance  chain                               | Yes          |
 | --from             | bnb1xxx/tbnb1xxx         | address of private key  with which to sign this tx, that is also the delegator address | Yes          |
-| --side-chain-id    | BSC-XXX                  | chain-id of the side  chain the validator belongs to         | Yes          |
+| --side-chain-id    | rialto                   | chain-id of the side  chain the validator belongs to         | Yes          |
 | --validator        | bva1xxx                  | bech32 address of the  validator, starts with “bva”          | Yes          |
 | --amount           | 1000000000:BNB  (10 BNB) | delegation amount, it has  8 decimal places                  | Yes          |
 
@@ -189,7 +189,7 @@ bnbcli staking bsc-unbond --chain-id Binance-Chain-Kongo --side-chain-id rialto 
 | **parameter name** | **example**       | **comments**                                         | **required** |
 | ------------------ | ----------------- | ---------------------------------------------------- | ------------ |
 | --chan-id          | Binance-Chain-XXX | the chain id of binance  chain                       | Yes          |
-| --side-chain-id    | BSC-XXX           | chain-id of the side  chain the validator belongs to | Yes          |
+| --side-chain-id    | rialto            | chain-id of the side  chain the validator belongs to | Yes          |
 
 #### Examples
 
@@ -206,7 +206,7 @@ bnbcli staking side-validator bva1hz5sg3u0v4gq2veyw5355z7qx6y7uuqhcuzf3f  --side
 | **parameter name** | **example**       | **comments**                                         | **required** |
 | ------------------ | ----------------- | ---------------------------------------------------- | ------------ |
 | --chan-id          | Binance-Chain-XXX | the chain id of binance  chain                       | Yes          |
-| --side-chain-id    | BSC-XXX           | chain-id of the side  chain the validator belongs to | Yes          |
+| --side-chain-id    | rialto            | chain-id of the side  chain the validator belongs to | Yes          |
 
 #### Examples
 
@@ -224,7 +224,7 @@ bnbcli staking side-delegation bnb1hz5sg3u0v4gq2veyw5355z7qx6y7uuqhcqre0d bva1hz
 | **parameter name** | **example**       | **comments**                                         | **required** |
 | ------------------ | ----------------- | ---------------------------------------------------- | ------------ |
 | --chan-id          | Binance-Chain-XXX | the chain id of binance  chain                       | Yes          |
-| --side-chain-id    | BSC-XXX           | chain-id of the side  chain the validator belongs to | Yes          |
+| --side-chain-id    | rialto            | chain-id of the side  chain the validator belongs to | Yes          |
 
 #### Examples
 
@@ -246,7 +246,7 @@ bnbcli staking side-unbonding-delegation [delegator-addr] [operator-addr] [flags
 | **parameter  name** | **example**       | **comments**                                        | **required** |
 | ------------------- | ----------------- | --------------------------------------------------- | ------------ |
 | --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
-| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+| --side-chain-id     | rialto            | chain-id of the side chain the validator belongs to | Yes          |
 
 **For example**
 ```bash
@@ -267,7 +267,7 @@ bnbcli staking side-unbonding-delegations [delegator-addr] [flags]
 | **parameter  name** | **example**       | **comments**                                        | **required** |
 | ------------------- | ----------------- | --------------------------------------------------- | ------------ |
 | --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
-| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+| --side-chain-id     | rialto            | chain-id of the side chain the validator belongs to | Yes          |
 
 **For example**
 
@@ -288,7 +288,7 @@ bnbcli staking side-val-unbonding-delegation [operator-addr] [flags]
 | **parameter  name** | **example**       | **comments**                                        | **required** |
 | ------------------- | ----------------- | --------------------------------------------------- | ------------ |
 | --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
-| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+| --side-chain-id     | rialto            | chain-id of the side chain the validator belongs to | Yes          |
 
 **For example**
 ```bash
@@ -308,7 +308,7 @@ bnbcli staking side-redelegation [delegator-addr] [src-operator-addr] [dst-opera
 | **parameter  name** | **example**       | **comments**                                        | **required** |
 | ------------------- | ----------------- | --------------------------------------------------- | ------------ |
 | --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
-| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+| --side-chain-id     | rialto            | chain-id of the side chain the validator belongs to | Yes          |
 
 **For example**
 
@@ -329,7 +329,7 @@ bnbcli staking side-redelegations [delegator-addr] [flags]
 | **parameter  name** | **example**       | **comments**                                        | **required** |
 | ------------------- | ----------------- | --------------------------------------------------- | ------------ |
 | --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
-| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+| --side-chain-id     | rialto            | chain-id of the side chain the validator belongs to | Yes          |
 
 **For example**
 
@@ -348,7 +348,7 @@ bnbcli staking side-val-redelegations [operator-addr] [flags]
 | **parameter  name** | **example**       | **comments**                                        | **required** |
 | ------------------- | ----------------- | --------------------------------------------------- | ------------ |
 | --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
-| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+| --side-chain-id     | rialto            | chain-id of the side chain the validator belongs to | Yes          |
 
 **For example**
 
@@ -364,7 +364,7 @@ bnbcli staking side-val-redelegations bva12hlquylu78cjylk5zshxpdj6hf3t0tahqmr98n
 | **parameter  name** | **example**       | **comments**                                        | **required** |
 | ------------------- | ----------------- | --------------------------------------------------- | ------------ |
 | --chan-id           | Binance-Chain-XXX | the chain id of binance chain                       | Yes          |
-| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to | Yes          |
+| --side-chain-id     | rialto            | chain-id of the side chain the validator belongs to | Yes          |
 
 
 **For example**
@@ -381,7 +381,7 @@ bnbcli staking     side-pool --side-chain-id=rialto --chain-id=test-chain-8d7sJz
 | **parameter  name** | **example**       | **comments**                                                 | **required** |
 | ------------------- | ----------------- | ------------------------------------------------------------ | ------------ |
 | --chan-id           | Binance-Chain-XXX | the chain id of binance chain                                | Yes          |
-| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to          | Yes          |
+| --side-chain-id     | rialto            | chain-id of the side chain the validator belongs to          | Yes          |
 | --top               | 10                | number of validators to be returned. set as maximum number of  validators  by default | Option       |
 
 **For example**
@@ -397,7 +397,7 @@ bnbcli staking side-top-validators --top 10 --side-chain-id=rialto --chain-id=te
 | **parameter  name** | **example**       | **comments**                                                 | **required** |
 | ------------------- | ----------------- | ------------------------------------------------------------ | ------------ |
 | --chan-id           | Binance-Chain-XXX | the chain id of binance chain                                | Yes          |
-| --side-chain-id     | BSC-XXX           | chain-id of the side chain the validator belongs to          | Yes          |
+| --side-chain-id     | rialto            | chain-id of the side chain the validator belongs to          | Yes          |
 | --jail-involved     | true              | if true, meaning that the jailed validators will be involved to count | Option       |
 
 **For example**

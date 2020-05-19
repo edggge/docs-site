@@ -38,7 +38,7 @@ Synchronizes a full node starting at genesis, verifying all blocks and executing
 
 ## Steps to Run a Fullnode
 
-1. Build from source code
+1.Build from source code
 
 ```bash
 git clone -b v0.1 https://github.com/binance-chain/bsc
@@ -50,17 +50,18 @@ make install
 
 or you can download the pre-build binaries from release page
 
-2. Download the config files
+2.Download the config files
 
 You need to have [genesis.json]() and [config.toml]()
 
-3. Write genesis state locally
+3.Write genesis state locally
 
 ```bash
-./geth --datadir node init genesis.json
+geth --datadir node init genesis.json
 ```
 
 You could see the following output:
+
 ```
 INFO [05-19|14:53:17.468] Allocated cache and file handles         database=/Users/huangsuyu/Downloads/bsc/node/geth/chaindata cache=16.00MiB handles=16
 INFO [05-19|14:53:17.498] Writing custom genesis block
@@ -71,9 +72,14 @@ INFO [05-19|14:53:17.524] Writing custom genesis block
 INFO [05-19|14:53:17.525] Persisted trie from memory database      nodes=21 size=56.84KiB time=638.396µs gcnodes=0 gcsize=0.00B gctime=0s livenodes=1 livesize=-574.00B
 INFO [05-19|14:53:17.528] Successfully wrote genesis state         database=lightchaindata hash=7d79cc…fb0d1e
 ```
-
-4. Start your fullnode
+4.Start your fullnode
 
 ```bash
-./geth --config ./config.toml --datadir ./node
-```
+geth --rpc --rpcport 8545  --rpcaddr 127.0.0.1 --rpccorsdomain 127.0.0.1 --config ./config.toml --datadir ./node -unlock 0xcED83a30bAF7dC6DeDA8042BDB8f28d7a233aD45 --mine --allow-insecure-unlock  --rpcapi "eth,web3,miner,net,admin,personal,debug" --pprofaddr 0.0.0.0 --metrics --pprof
+ ```
+
+5.Monitor node status
+
+you can monitor the log from `/node/bsc.log` by default.
+
+

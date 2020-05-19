@@ -33,7 +33,7 @@ Staking and Governance on Binance chain is at a higher layer upon consensus. As 
 
 This doc only focus on the **BSC validators** and **Staking dApps** on BSC parts which are more closely to consensus engine.
 
-## System Reward Distribution
+## [System Reward Distribution](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001002/contracts)
 The system reward structure in BSC is highly configurable. We may adjust the parameters through governance.
 
 The rewards comes from transaction fees,  rewards are distributed based on several(configurable) rules:
@@ -47,17 +47,20 @@ The coming section will explain how these contracts distributing reward.
 
 ### Light client contract
 We can consider light client contract as a utility contract, we will not explain the detail of it in this doc. The following interfaces is used:
-- **isHeaderSynced(uint64 height) external**
+
+* **isHeaderSynced(uint64 height) external**
 
    The block header of Binance chain must have synced before verifying any state against block at specified height.
-- **validateMerkleProof(bytes32 appHash, string memory storeName, bytes memory key, bytes memory value, bytes memory proof)**
+
+* **validateMerkleProof(bytes32 appHash, string memory storeName, bytes memory key, bytes memory value, bytes memory proof)**
 
    It will verify the existence key value or the absence of the key against the block at specified height.
-- **getAppHash(uint64 height) external**
+
+* **getAppHash(uint64 height) external**
 
    return the appHash of BC at specified height.
 
-### BSCValidatorSet contract
+### [BSCValidatorSet contract](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001000/contracts)
 It is a watcher of validators change of BSC on Binance chain. It implement the following interfaces:
 
 - **handlePackage(bytes calldata msgBytes, bytes calldata proof, uint64 height, uint64 packageSequence)**
@@ -79,7 +82,8 @@ It is a watcher of validators change of BSC on Binance chain. It implement the f
 
 **Actions validators update**:
 
-        1. Do distribue the incoming of validators: if the incoming is large than 0.1 BNB, will do cross chain transfer to its account on BC, otherwise will transfer to its address on BSC.
+        1. Do distribue the incoming of validators:
+        if the incoming is large than 0.1 BNB, will do cross chain transfer to its account on BC, otherwise will transfer to its address on BSC.
         2. Update the latest validatorSet.
         3. Clean the metrics record on slash contract.
         4. Reward the msg sender by call sytem reward contract.
@@ -99,7 +103,7 @@ It is a watcher of validators change of BSC on Binance chain. It implement the f
 
         1. Add the incoming of the validator.
 
-### System Reward contract
+### [System Reward contract](https://explorer.binance.org/smart-testnet/address/0x0000000000000000000000000000000000001002/contracts)
 For now, only **Light Client contract**, **BSCValidatorSet contract** and **TokenHub contract** are permitted to call system reward contract. It implement the following interfaces:
 
 - **claimRewards(address payable to, uint256 amount) external**

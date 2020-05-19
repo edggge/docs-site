@@ -19,13 +19,14 @@ Validators and delegators will earn rewards from transaction fees: dApp usages
 
 **Hardware Requirements**
 * running BSC software in VPS Servers (both with firewall):
-	* **DigitalOcean**: CPU optimized droplet 32GB/16CPU: https://www.digitalocean.com/docs/droplets/resources/choose-plan/
+	* **DigitalOcean**: CPU optimized droplet: https://www.digitalocean.com/docs/droplets/resources/choose-plan/
 	* **Amazon EC2**: C5 instance https://aws.amazon.com/ec2/instance-types/c5/
 	* **Google Cloud Engine**: General-purpose (N1) https://cloud.google.com/compute/docs/machine-types
 *  Memory: 16 GB of RAM
 *  Disk space: 500 GB of SSD storage (no normal hard disk or network hard disk)
 *  CPU: 64-bitNetwork: 1GB fiber
 *  HSM(recomended)
+
 *If you are running a node in Testnet, 4CPU/8GB of RAM is sufficient*
 
 ## What is a VPS?
@@ -36,7 +37,7 @@ VPS stands for Virtual Private Server. A VPS runs its own copy of an operating s
 
 A VPS is recommended (and often required) for validator node setups, as you will need a dedicated static IP and 99.9% uptime to provide a stable and efficient node for the network. Unlike your home or office PC, a validator VPS serves one purpose, to securely and efficiently run a validator node. A VPS is online 24/7 and provides dedicated resources for the project’s decentralized network.
 
-## How to Start a Validator Node
+## [How to Be a Validator Candidate](candidate.md)
 1. Configure your VPSnetwork ports, ssl, firewall
 2. Install BSC node:
 * git checkout the correct branch

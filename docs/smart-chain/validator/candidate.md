@@ -1,17 +1,29 @@
 # How to become a Validator Candidate
 
+## Install Fullnode
+
+Please follow this [guide](../developer/fullnode.md) to install bsc fullnode locally.
 
 ## Create an account
 
-Please refer to this guide on [how to create a wallet](../wallet/metamask.md) with MetaMask
+You need to create an account that represents a key pair first. Use the following command to create a new account and set a password for that account:
+```bash
+geth account new
+```
+
+This command will return the public address and the path to your private key. BACKUP of keyfile is necessory!
 
 ## Get some testnet fund from faucet
 
 Go to this faucet page: <https://testnet.binance.org/faucet-smart>
 
-## Run a Validator Node on BSC Testnet
+## Start Fullnode on BSC Testnet
 
-Please follow this guide to run a fullnode
+Please run this command to run a fullnode
+
+```bash
+geth --config ./config.toml --datadir ./node -unlock {validator-address} --mine --allow-insecure-unlock  --rpcapi "eth,web3,miner,net,admin,personal,debug" --metrics
+```
 
 ## Transfer BNB from BSC to BC
 

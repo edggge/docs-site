@@ -122,7 +122,7 @@ If a validator failed to produce a block, will record it and finally slash it. I
 
 - **Slash(validator address) external**
 
-    **Conditions:
+    **Conditions**:
 
         1. The message sender must in coinbase.
         2. can only call once in one block.

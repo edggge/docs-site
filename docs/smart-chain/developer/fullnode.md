@@ -40,6 +40,8 @@ Synchronizes a full node starting at genesis, verifying all blocks and executing
 
 1.Build from source code
 
+Make sure that you have installed [Go 1.13+](https://golang.org/doc/install) and have added `GOPATH` to `PATH` environment variable
+
 ```bash
 git clone -b v0.1 https://github.com/binance-chain/bsc
 # Enter the folder bsc was cloned into
@@ -75,7 +77,7 @@ INFO [05-19|14:53:17.528] Successfully wrote genesis state         database=ligh
 4.Start your fullnode
 
 ```bash
-geth --rpc --rpcport 8545  --rpcaddr 127.0.0.1 --rpccorsdomain 127.0.0.1 --config ./config.toml --datadir ./node -unlock 0xcED83a30bAF7dC6DeDA8042BDB8f28d7a233aD45 --mine --allow-insecure-unlock  --rpcapi "eth,web3,miner,net,admin,personal,debug" --pprofaddr 0.0.0.0 --metrics --pprof
+geth --rpc --rpcport 8545  --rpcaddr 127.0.0.1 --rpccorsdomain 127.0.0.1 --config ./config.toml --datadir ./node -unlock {validator-address} --mine --allow-insecure-unlock  --rpcapi "eth,web3,miner,net,admin,personal,debug" --pprofaddr 0.0.0.0 --metrics --pprof
  ```
 
 5.Monitor node status

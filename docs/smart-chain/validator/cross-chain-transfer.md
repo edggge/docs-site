@@ -1,6 +1,6 @@
 # Cross-Chain Transfer
 
-Users can only transfer between BEP2 and BEP2E tokens on BSC.
+Cross-chain transfers only support binded BEP2 tokens on BC and BEP2E tokens on BSC.
 
 ## Verify Token Info
 
@@ -126,7 +126,7 @@ The value here should be relayerFee/1e18.
 
 
 
- 
+
 
 | Parameter Name | Type      | Description                                                  |
 | -------------- | --------- | ------------------------------------------------------------ |
@@ -137,13 +137,13 @@ The value here should be relayerFee/1e18.
 | expireTime     | uint256   | Timestamp, counted by  second                                |
 | relayFee       | uint256   | The relayFee should be  no less than miniRelayFee * lengthOf(amounts). The initial miniRelayFee is  1e16. It can be changed by on-chain governance. |
 
- The value here should be relayFee/1e18. 
+ The value here should be relayFee/1e18.
 
 
 
 ### Mint
 
-If both the bep2e token and bep2 token are mintable, then token owners can still mint their tokens even after token binding. Besides, token owners need to ensure the total supply and the locked amount on both chains are still matched, otherwise, users might can’t transfer their tokens to another chain. 
+If both the bep2e token and bep2 token are mintable, then token owners can still mint their tokens even after token binding. Besides, token owners need to ensure the total supply and the locked amount on both chains are still matched, otherwise, users might can’t transfer their tokens to another chain.
 
 #### Mint token on BC
 
@@ -153,13 +153,14 @@ tbnbcli token mint --symbol ABC-A64 --amount 1000000000000 --from owner --chain-
 ```
 
 2. Mint token on BSC and lock the new minted token:
-* Call **mint** method of bep2e contract, the mint amount should be 1e22. 
+* Call **mint** method of bep2e contract, the mint amount should be 1e22.
 * Transfer all minted ABC token to tokenHub contract: `0x0000000000000000000000000000000000001004`
 
 #### Mint token on BSC
 
-1. Call **mint** of BEP2E contract to mint 10000 ABC, the mint amount should be 1e22(18 decimals). 
+1. Call **mint** of BEP2E contract to mint 10000 ABC, the mint amount should be 1e22(18 decimals).
 2. Mint token on BC and lock the new minted token:
+
 * Execute the following command to mint 10000 ABC-A64:
 ```bash
 tbnbcli token mint --symbol ABC-A64 --amount 1000000000000 --from owner --chain-id Binance-Chain-Kongo --node http://data-seed-prealpha-2-s1.binance.org:80

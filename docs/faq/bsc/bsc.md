@@ -2,7 +2,7 @@
 
 ## What is Binance Smart Chain?
 
-Binance Smart Chain brings EVM-compatible programmability and native cross-chain communication with Binance Chain using an innovative consensus of Proof of Staked Authority(PoSA)
+Binance Smart Chain brings EVM-compatible programmability and native cross-chain communication with Binance Chain using an innovative consensus of [Proof of Staked Authority(PoSA)](../../smart-chain/guides/concepts/consensus.md)
 
 ## Why is Binance Smart Chain designed as a separate chain from Binance Chain?
 
@@ -16,7 +16,7 @@ There will be fewer validators on Binance Smart Chain testnet.
 
 ## Can you tell more about Proof of Staked Authority(PoSA)? What is it?
 
-PoSA is a combination of PoA and PoS. Blocks are produced by a limited set of validators, they are elected in and out based on a staking based governance. Validators take turns to produce blocks in a PoA manner
+[PoSA](../../smart-chain/guides/concepts/consensus.md) is a combination of PoA and PoS. Blocks are produced by a limited set of validators, they are elected in and out based on a staking based governance. Validators take turns to produce blocks in a PoA manner
 
 ## What are the benefits for developers to build on Binance Smart chain?
 

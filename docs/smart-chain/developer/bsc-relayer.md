@@ -19,6 +19,22 @@ Edit`config.json` and fill your BSC private key to bsc_config.private_key, examp
 !!! Tip
 		Currently the bsc-relayer code is not fully prepared. Some features like `db persistence`, `alert`, `prometheus monitor` are still under development. So please don’t modify the configuration about db_config, alert_config, instrumentation_config, admin_config
 
+## Steps to Install BSC Relayer
+
+1.Build from source code
+
+Make sure that you have installed [Go 1.13+](https://golang.org/doc/install) and have added `GOPATH` to `PATH` environment variable
+
+```bash
+git clone -b v https://github.com/binance-chain/bsc-relayer
+# Enter the folder bsc was cloned into
+cd bsc-relayer
+# Comile and install bsc
+make install
+```
+
+or you can download the pre-build binaries from [release page](https://github.com/binance-chain/smart-chain-binary/tree/pre-release/bsc)
+
 ## Start Relayer
 
 1. Start Locally

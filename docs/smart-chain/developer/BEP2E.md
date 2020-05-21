@@ -1,6 +1,6 @@
 # BEP2E Token
 
-A BEP2E token must implement the interface `IBEP2E` in [IBEP2E.sol](IBEP2E.sol). This is a template contract [BEP2EToken.template](BEP2EToken.template). Users just need to fill in `_name`, `_symbol`, `_decimals` and `_totalSupply` according to their own requirements: 
+A BEP2E token must implement the interface `IBEP2E` in [IBEP2E.sol](IBEP2E.sol). This is a template contract [BEP2EToken.template](BEP2EToken.template). Users just need to fill in `_name`, `_symbol`, `_decimals` and `_totalSupply` according to their own requirements:
 ```
   constructor() public {
     _name = {{TOKEN_NAME}};
@@ -99,9 +99,5 @@ The balance will be bumped by e18 for BNB.
     });
 ```
 
-### Call BEP2E contract
 
-```
-
-```
 

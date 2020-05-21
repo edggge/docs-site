@@ -10,7 +10,7 @@ Validators and delegators will earn rewards from transaction fees: dApp usages
 
 ## What's on-chain governance proposal?
 
-slash amount, cross-chain transfer fees
+The proposal will decide: slash amount, cross-chain transfer fees
 
 ## How to join testnet as a validator?
 
@@ -38,7 +38,7 @@ Directly facing internet (public IP, no NAT)
 
 ## How many BNB are required to create a validator?
 
-The minimum self-delegated amount is **20000BNB**.
+The [minimum self-delegated amount](../../smart-chain/validator/Parameters.md) is **50000BNB**.
 
 ## When are rewards paid out?
 

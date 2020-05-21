@@ -118,7 +118,7 @@ nav:
           - Issue Token: smart-chain/developer/issue-BEP2E.md
           - Bind Token: smart-chain/developer/bind-tokens.md
           - Cross-chain Transfer: smart-chain/validator/cross-chain-transfer.md
-
+      - RPC: smart-chain/developer/rpc.md
   - Wallets:
     - Binance Chain Walletsupport: wallets/wallets.md
     - Wallet Tutorial:

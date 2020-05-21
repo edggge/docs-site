@@ -43,18 +43,19 @@ Synchronizes a full node starting at genesis, verifying all blocks and executing
 Make sure that you have installed [Go 1.13+](https://golang.org/doc/install) and have added `GOPATH` to `PATH` environment variable
 
 ```bash
-git clone -b v0.1 https://github.com/binance-chain/bsc
+git clone -b v1.9.13-alpha0 https://github.com/binance-chain/bsc
 # Enter the folder bsc was cloned into
 cd bsc
 # Comile and install bsc
 make install
 ```
 
-or you can download the pre-build binaries from release page
+or you can download the pre-build binaries from [release page](https://github.com/binance-chain/smart-chain-binary/tree/pre-release/bsc)
 
 2.Download the config files
 
-You need to have [genesis.json]() and [config.toml]()
+You need to have [genesis.json](https://github.com/binance-chain/smart-chain-binary/blob/pre-release/bsc/fullnode/config/genesis.json) and [config.toml](https://github.com/binance-chain/smart-chain-binary/blob/pre-release/bsc/fullnode/config/config.toml)
+
 
 3.Write genesis state locally
 

@@ -29,3 +29,5 @@ In blockchain network, an oracle refers to the element that connects smart contr
 ## Which wallet support cross-chain transfer?
 
 You need to use [MyEtherWallet](../../smart-chain/wallet/myetherwallet.md) to call contracts and use Binance Chain commandline client: `bnbcli`/ `tbnbcli` for complementary commands
+
+Please refer to this [guide](../validator/cross-chain-transfer.md) for details

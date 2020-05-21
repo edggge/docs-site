@@ -14,19 +14,19 @@ Please follow the guide [here](https://community.binance.org/topic/2487/)
 
 ## How to issue BEP2E tokens?
 
-Please follow the guide [here]()
+Please follow the guide [here](../../smart-chain/developer/issue-BEP2E.md)
 
 ## How can I stake my BNB?
 
-Please follow the guide [here]()
+Please follow the guide [here](../../smart-chain/delegator/del-guide.md)
 
 ## How many tokens are required to stake BNB?
 
-The minimum delegated amount is **1BNB**.
+The [minimum delegated amount](../../smart-chain/validator/Parameter.md) is **1BNB**.
 
 ## Which wallets can be used to stake BNB?
 
-You can only use command line tool:
+You can only use [command line tool](https://github.com/binance-chain/smart-chain-binary/tree/pre-release/bc/cli)
 
 ## Where can I find out more about staking economics and rewards?
 

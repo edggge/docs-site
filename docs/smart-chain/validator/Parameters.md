@@ -22,7 +22,9 @@ BNB
 ## Slashing
 
 * Double-Sign Slash: 10000BNB
+    * Details: Anyone can submit a slashing request on BC with the evidence of Double Sign of BSC, which should contain the 2 block headers with the same height and parent block, sealed by the offending validator.
 * Offline Slash: 50BNB
+    * Details: If a validator missed more than 50 blocks, the blocking reward for validator will not be relayed to BC for distribution but shared with other better validators. If it missed more than 150 blocks, then this will be propagated back to BC where another Slashing will happen
 * Submitter Reward: 1000BNB
 
 

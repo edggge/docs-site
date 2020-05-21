@@ -21,6 +21,34 @@ However, as BSC wants to remain compatible with Ethereum as much as possible. On
 
 Validators are ranked by their power and operator address. The more its delegation tokens, the higher ranking is. If two validators get the same amount of delegated tokens, validator with smaller address bytes has higher ranking.
 
+## Reward Distrubution
+
+Since BSC uses PoSA as its consensus engine, all the delegators of validators can receive some share of the validators’ reward.
+
+However, the rewards(fees) are collected on BSC while the staking info is stored on BC.
+
+So the main idea is we transfer all the rewards from BSC to BC once every day and execute the distribution on BC.
+
+### Main Workflow:
+1. ValidatorSet is updated in BreatheBlock, the frequency is once a day. let’s assume it happens on day N.
+2. The info of validator set changes of day N would be transmitted to BSCthrough interchain communication.
+3. The validator set contract on BSC would receive and update the new validatorset.
+
+After that, it would trigger several interchain transfer to transfer the fees that every **previous validators** collected in this period to their addresses on BC. we can see that fees belongs to the validators of day N-1.
+
+4. To make some room for the error handling, we distribute the fees of day N-1 in the next breathe block (day N+1).
+
+### Details
+
+1. even if validator set or any their voting powers are not changed on that day, we still transmit the validator set info to BSC.
+2. the validator set contract maintains a map like `ValidatorFeeMap` recording the fees value that every validators collected after the previous period(We define the **period**     as the time between two contract calls of validator set changes). The actual fees are collected on the contract address.
+3. the interchain transfer to send fees from the contract address to each validator’s distribution address on BC. Note the distribution address is **auto generated** on BC when     handling the create-validator tx, so no private key is corresponded to     that address and no one except the distribution module can move the tokens     on that address.
+4. we have a lower limit of the value of interchain transfer, at least the value can cover the transfer fee. Also, interchain transfer will only allow max 8 decimals for the amount. The tiny left part would be kept in the contract or put into the system reward pool.
+5. the reward(totalfees \* commissionRate) would be distributed in proportion to the delegations, the left part would be sent to the validator fee address.
+
+### Error handling:
+
+1. if the cross-chain transfer failed, the tokens would be sent back to a specified address(i.e. the  `SideFeeAddr` in the store section, validators can change this address via the EditValidator tx). After that, validators can manually deposit the tokens to its own `DistributionAddr` on BC via Transfer tx. We do not force the validator to do so, but it’s an indicator that can help delegators choose validators.
 
 ## Commands
 
@@ -46,6 +74,15 @@ Validators are ranked by their power and operator address. The more its delegati
 | --side-cons-addr             | 0x1234abcd                           | consensus address of the  validator on side chain, please use hex format prefixed with 0x | Yes          |
 | --side-fee-addr              | 0xabcd1234                           | address that validator  collects fee rewards on side chain, please use hex format prefixed with 0x | Yes          |
 | --home                       | /path/to/cli_home                    | home directory of bnbcli  data and config, default to “~/.bnbcli” | No           |
+
+Some address parameters we need to highlight here:
+
+| Field Name | Usage |
+| ------------- | ------------------------------------------------------------ |
+| DelegatorAddr | Self  delegator address. For BC, this address also used to collect fees. |
+| ValidatorAddr | validator  operator’s address, used in governance ops like voting. |
+| SideConsAddr  | block  producer’s address on side chain, i.e. consensus address. BC has another  parameter named `PubKey`, here SideConsAddr replaced that for BSC.  Only  BSC validators need this parameter. |
+| SideFeeAddr   | fees  are collected in this address on BSC,   Only  BSC validators need this parameter. |
 
 
 

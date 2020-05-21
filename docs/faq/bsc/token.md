@@ -22,7 +22,7 @@ Please follow the guide [here](../../smart-chain/delegator/del-guide.md)
 
 ## How many tokens are required to stake BNB?
 
-The [minimum delegated amount](../../smart-chain/validator/Parameter.md) is **1BNB**.
+The [minimum delegated amount](../../smart-chain/validator/Parameters.md) is **1BNB**.
 
 ## Which wallets can be used to stake BNB?
 

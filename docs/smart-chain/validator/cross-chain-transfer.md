@@ -40,7 +40,10 @@ Committed at block 465899 (tx hash: 68FFF82197E27A3EC14AFF8C99A035FA9CA7120312AA
 ```
 
 ## Transfer BNB from BSC to BC
-### Call **transferOut** of TokenHub contract in MyEtherWallet:
+
+### transferOut
+
+Call **transferOut** of TokenHub contract in MyEtherWallet:
 
 ![img](https://lh3.googleusercontent.com/q8-nnt12h8gvYyMe6iwLalwzY-1jHfQ11BsSyIz3qkQPCjp_-D-dIzPxZ-HuMJngCxTs7pt65-zSUIYImpsoO8bJ_QC_pyfPMu_2O7Lh65uDvVXrkhKqOakI070vKuEK3UNnlk8m)
 
@@ -66,7 +69,8 @@ After all the above parameters have been set to proper values, users can click t
 
 
 ### batchTransferOut
-Call batchTransferOut of TokenHub contract in MyEtherWallet:
+
+Call **batchTransferOut** of TokenHub contract in MyEtherWallet:
 
 ![img](https://lh6.googleusercontent.com/kuEr0fCOv9kRtVZgEiyUtvKL_ixkuHKYy0J9hECGNWSdjNHpZKjKSioE6kLVK-WsGDl5xQvtZPR-YLJpJIw-z1P6qiwHXpMSYQ95esODXW8CzJgnUVbj-Qq1pgn4jKmoTX-kF1VS)
 
@@ -99,7 +103,7 @@ Execute the following command to transfer ABC-A64 token to BSC:
 tbnbcli bridge transfer-out --to 0xEe9546E92e6876EdF6a234eFFbD72d75360d91f0 --expire-time 1597543193 --chain-id Binance-Chain-Kongo --from owner --amount 10000000000:ABC-A64 --node http://data-seed-prealpha-2-s1.binance.org:80
 ```
 ## Transfer BEP2E to BC
-Before calling transferOut or batchTransferOut, users need to call approve method to grant enough allowance to TokenHub contract. For transferOut method, the allowance should equal the transfer amount. For batchTransferOut, the allowance should be the sum of the amount array.
+Before calling **transferOut** or **batchTransferOut**, users need to call **approve** method to grant enough allowance to TokenHub contract. For **transferOut** method, the allowance should equal the transfer amount. For **batchTransferOut**, the allowance should be the sum of the amount array.
 
 ### transferOut
 
@@ -112,7 +116,7 @@ Before calling transferOut or batchTransferOut, users need to call approve metho
 | expireTime   | uint256 | Timestamp, counted by  second                                |
 | relayFee     | uint256 | The relayFee should be  no less than miniRelayFee. The initial miniRelayFee is 1e16. It can be  changed by  on-chain governance. |
 
- The value here should be relayerFee/1e18. 
+The value here should be relayerFee/1e18.
 
 
 
@@ -120,3 +124,44 @@ Before calling transferOut or batchTransferOut, users need to call approve metho
 
 ![img](https://lh6.googleusercontent.com/kuEr0fCOv9kRtVZgEiyUtvKL_ixkuHKYy0J9hECGNWSdjNHpZKjKSioE6kLVK-WsGDl5xQvtZPR-YLJpJIw-z1P6qiwHXpMSYQ95esODXW8CzJgnUVbj-Qq1pgn4jKmoTX-kF1VS)
 
+
+
+ 
+
+| Parameter Name | Type      | Description                                                  |
+| -------------- | --------- | ------------------------------------------------------------ |
+| recipientAddrs | address[] | decode bech32 address  to hex string. This is a online too to decode bech32: https://slowli.github.io/bech32-buffer/0 |
+| amounts        | uint256[] | Here the decimals is  18, so each amount should be N * 1e10  |
+| refundAddrs    | address[] | sender can specify  some address as the refund address if the cross chain transfer is failed. |
+| contractAddr   | address   | BEP2E contract address                                       |
+| expireTime     | uint256   | Timestamp, counted by  second                                |
+| relayFee       | uint256   | The relayFee should be  no less than miniRelayFee * lengthOf(amounts). The initial miniRelayFee is  1e16. It can be changed by on-chain governance. |
+
+ The value here should be relayFee/1e18. 
+
+
+
+### Mint
+
+If both the bep2e token and bep2 token are mintable, then token owners can still mint their tokens even after token binding. Besides, token owners need to ensure the total supply and the locked amount on both chains are still matched, otherwise, users might can’t transfer their tokens to another chain. 
+
+#### Mint token on BC
+
+1. Execute the following command to mint 10000 ABC-A64:
+```bash
+tbnbcli token mint --symbol ABC-A64 --amount 1000000000000 --from owner --chain-id Binance-Chain-Kongo --node http://data-seed-prealpha-2-s1.binance.org:80
+```
+
+2. Mint token on BSC and lock the new minted token:
+* Call **mint** method of bep2e contract, the mint amount should be 1e22. 
+* Transfer all minted ABC token to tokenHub contract: `0x0000000000000000000000000000000000001004`
+
+#### Mint token on BSC
+
+1. Call **mint** of BEP2E contract to mint 10000 ABC, the mint amount should be 1e22(18 decimals). 
+2. Mint token on BC and lock the new minted token:
+* Execute the following command to mint 10000 ABC-A64:
+```bash
+tbnbcli token mint --symbol ABC-A64 --amount 1000000000000 --from owner --chain-id Binance-Chain-Kongo --node http://data-seed-prealpha-2-s1.binance.org:80
+```
+* Transfer all minted ABC-A64 token to the pure-code-controlled address: `tbnb1v8vkkymvhe2sf7gd2092ujc6hweta38xnc4wpr`(mainnet address: `bnb1v8vkkymvhe2sf7gd2092ujc6hweta38xadu2pj`)

@@ -88,3 +88,14 @@ Block height in the chain, where the height of the genesis is block 0.
 The Keccak 256-bit hash of the entire parent block’s header (including its nonce and mixhash). Pointer to the parent block, thus effectively building the chain of blocks. In the case of the Genesis block, and only in this case, it's 0.
 
 
+## Binance Smart Chain Initialization
+
+There are two requirements we need to meet:
+1. There are already some BNBs in the BC network when it starts up.
+2. All the initial validators of Binance Smart Chain should be recorded in the BC.
+
+The first one is a must, because if we want to transfer some BNB to BSC, we will consume some gas in BSC. So we must ensure there are already some BNBs in BSC. That means the first interchain transfer should be done in the genesis block of side chain.
+
+For the second one, we should have that to ensure all the validators info and changes are tracked in the main chain.
+
+So the solution is we enable the staking functionality of BSC first on BC. So people can apply to be a validator or delegate to these candidates. We can have a time limit. After that, we collect all the elected validators and write them to the genesis of BSC.

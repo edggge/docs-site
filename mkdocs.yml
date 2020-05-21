@@ -59,7 +59,7 @@ nav:
     - Concepts:
       - Consensus: smart-chain/guides/concepts/consensus.md
       - Comparison: smart-chain/guides/general.md
-      - Genesis: smart-chain/guides/concepts/genesis.md
+      - Genesis File: smart-chain/guides/concepts/genesis.md
       - Participate: smart-chain/developer/fullnode.md
       - Cross-chain:
         - Cross-chain Mechanism: smart-chain/guides/concepts/cross-chain.md

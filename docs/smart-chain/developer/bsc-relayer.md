@@ -22,7 +22,7 @@ git clone -b v1.0.0-alpha.0 https://github.com/binance-chain/bsc-relayer
 # Enter the folder bsc was cloned into
 cd bsc-relayer
 # Comile and install bsc
-make install
+make build
 ```
 
 or you can download the pre-build binaries from [release page](https://github.com/binance-chain/smart-chain-binary/tree/pre-release/bsc)

@@ -47,7 +47,7 @@ git clone -b v1.9.13-alpha.0 https://github.com/binance-chain/bsc
 # Enter the folder bsc was cloned into
 cd bsc
 # Comile and install bsc
-make install
+make geth
 ```
 
 or you can download the pre-build binaries from [release page](https://github.com/binance-chain/smart-chain-binary/tree/pre-release/bsc)

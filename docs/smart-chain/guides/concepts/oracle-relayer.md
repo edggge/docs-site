@@ -9,3 +9,6 @@ The relay process:
 * Parse the cross chain tranfer parameters from event data
 * Use this information to build an unsigned BC oracle transaction
 * Sign and broadcast transaction.
+
+
+GitHub Implementation link: <https://github.com/binance-chain/oracle-relayer>

@@ -3,6 +3,10 @@ Relayers are responsible to submit Cross-Chain Communication Packages between th
 
 Relayers for BC-to-BSC communication referred to as **BSC Relayers** are a standalone process that can be run by anyone, and anywhere, except that Relayers must register themselves onto BSC and deposit a certain amount of BNB. Only relaying requests from the registered Relayers will be accepted by BSC.
 
+GitHub Implementation link: <https://github.com/binance-chain/bsc-relayer>
+
+Config Files: <https://github.com/binance-chain/bsc-relayer-config>
+
 ## Monitor and Parse Cross Chain Event
 As a BSC relayer, it must have proper configurations on the following three items:
 
@@ -15,13 +19,13 @@ As a BSC relayer, it must have proper configurations on the following three item
 A BSC relayer is required to parse all block results and pick out all events with event type “IBCPackage” from endBlock event table. This is an cross chain package event example:
 
 ```json
-{ 
+{
   "type": "IBCPackage",
   "attributes":
   [
-    {    
+    {
       "key": "IBCPackageInfo",
-      "value": "bsc::2::8::19"   
+      "value": "bsc::2::8::19"
     }
   ]
 }

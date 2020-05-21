@@ -1,5 +1,8 @@
 # Build-in System Contract
 
+GitHub Implementation link: <https://github.com/binance-chain/bsc-genesis-contract>
+
+
 | Contract Name         | Contract Address  | ABI file |
 | --------------------- | ----------------- | ------------- |
 | BSCValidatorSet Contract | 0x0000000000000000000000000000000000001000 | [bscvalidatorset](../../system-smart-contract/bscvalidatorset.abi)|
@@ -10,7 +13,7 @@
 | RelayerIncentivize Contract | 0x0000000000000000000000000000000000001005 | [relayerincentivize](../../system-smart-contract/relayerincentivize.abi)|
 | RelayerHub Contract | 0x0000000000000000000000000000000000001006 | [relayerhub](../../system-smart-contract/relayerhub.abi) |
 
-## On-Chain Light Client 
+## On-Chain Light Client
 
 The purpose of cross-chain interoperability is to enable one blockchain to function as a light-client of another. Since Binance Chain is using a classical Byzantine Fault Tolerant consensus algorithm, light-client verification is cheap and easy: all we have to do is check validator signatures on the latest block, and verify a Merkle proof of the state.
 
@@ -88,12 +91,12 @@ function **verifyMerkleProof**(int64 height, byte[] key, byte[] value, byte[] pr
 
 * **BSCValidatorSet Contract**
 
-    It is a watcher of validators change of BSC on Binance Chain. It will interact with light client contracts to verify the interchain transaction, and apply the validator set change for BSC. It also stores rewarded gas fee of blocking for validators, and distribute it to validators when receiving cross chain package of validatorSet change. 
-   
+    It is a watcher of validators change of BSC on Binance Chain. It will interact with light client contracts to verify the interchain transaction, and apply the validator set change for BSC. It also stores rewarded gas fee of blocking for validators, and distribute it to validators when receiving cross chain package of validatorSet change.
+
 * **System Reward Contract**
 
     The incentive mechanism for relayers to maintain system contracts. They will get rewards from system reward contract.
- 
+
 * **Liveness Slash Contract**
 
     The liveness of BSC relies on validator set can produce blocks timely when it is their turn. Validators can miss their turns due to any reason. This instability of the operation will hurt the performance of the network and introduce more non-deterministic into the system. This contract responsible for recording the missed blocking metrics of each validator. Once the metrics are above the predefined threshold, the blocking reward for validator will not be relayed to BC for distribution but shared with other better validators.

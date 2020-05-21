@@ -1,13 +1,5 @@
 # BSC Relayer Guides
 
-## Download Binary
-The codebase will be open-sourced soon. For now, download bsc-relayer binary from this url: <https://github.com/binance-chain/smart-chain-binary>
-
-## Get Example Config File
-Get example config from this url: <https://github.com/binance-chain/bsc-relayer-config/blob/master/bsc/testnet/config.json>
-
-Edit`config.json` and fill your BSC private key to bsc_config.private_key, example private key: `AFD8C5D83F148065176268A9D1EE375A10CEE1E74D15985D4CC63E467EC34DA5`
-
 ## Prepare Fund
 
 1. Make sure that you have enough BNB in your account. You can get from [faucet](https://testnet.binance.org/faucet-smart)
@@ -26,7 +18,7 @@ Edit`config.json` and fill your BSC private key to bsc_config.private_key, examp
 Make sure that you have installed [Go 1.13+](https://golang.org/doc/install) and have added `GOPATH` to `PATH` environment variable
 
 ```bash
-git clone -b v https://github.com/binance-chain/bsc-relayer
+git clone -b v1.0.0-alpha.0 https://github.com/binance-chain/bsc-relayer
 # Enter the folder bsc was cloned into
 cd bsc-relayer
 # Comile and install bsc
@@ -34,6 +26,12 @@ make install
 ```
 
 or you can download the pre-build binaries from [release page](https://github.com/binance-chain/smart-chain-binary/tree/pre-release/bsc)
+
+## Get Example Config File
+Get example config from this url: <https://github.com/binance-chain/bsc-relayer-config/blob/master/bsc/testnet/config.json>
+
+Edit`config.json` and fill your BSC private key to bsc_config.private_key, example private key: `AFD8C5D83F148065176268A9D1EE375A10CEE1E74D15985D4CC63E467EC34DA5`
+
 
 ## Start Relayer
 
